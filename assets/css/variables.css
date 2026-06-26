@@ -1,0 +1,31 @@
+:root {
+  /* FWD Thailand orange palette – https://www.fwd.co.th/ */
+  --color-primary: #e87722;
+  --color-primary-dark: #c96510;
+  --color-primary-light: #f58020;
+  --color-accent: #e87722;
+  --color-accent-orange: #f58020;
+  --color-accent-red: #dc2f02;
+  --color-badge-orange: #f58020;
+  --color-bg-light: #faf6f2;
+  --color-bg-mint: #fde8d4;
+  --color-bg-mint-light: #fff4ec;
+  --color-white: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-muted: #5c5c5c;
+  --color-text-light: #8a8a8a;
+  --color-border: #e5e5e5;
+  --color-footer-dark: #c96510;
+
+  --font-family: 'Better Together', sans-serif;
+  --container-max: 1440px;
+  --header-height: 80px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 50px;
+  --shadow-sm: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --transition: 0.25s ease;
+}

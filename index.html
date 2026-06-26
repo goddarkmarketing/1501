@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Thailand - ตัวแทน FWD ประกันชีวิต</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/site-chrome.css">
+  <link rel="stylesheet" href="assets/css/figma.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+</head>
+<body class="page-home">
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="logo logo--header">
+      <img src="assets/img/logo.png" alt="Agent Thailand" class="logo__img" width="183" height="78">
+    </a>
+    <nav class="header__nav">
+      <a href="index.html" class="header__nav-link active">หน้าแรก</a>
+<div class="header__nav-item header__nav-item--dropdown" data-nav-menu="products">
+        <button type="button" class="header__nav-link header__nav-link--dropdown" aria-expanded="false" aria-haspopup="true">
+          ผลิตภัณฑ์ทั้งหมด
+          <i data-lucide="chevron-down" class="header__nav-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="header__nav-submenu" role="menu"></div>
+      </div>
+      <a href="promotion.html" class="header__nav-link">โปรโมชั่น</a>
+      <a href="blog.html" class="header__nav-link">บทความ</a>
+            <div class="header__nav-item header__nav-item--dropdown" data-nav-menu="services">
+        <button type="button" class="header__nav-link header__nav-link--dropdown" aria-expanded="false" aria-haspopup="true">
+          บริการลูกค้า
+          <i data-lucide="chevron-down" class="header__nav-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="header__nav-submenu" role="menu"></div>
+      </div>
+      <a href="about-us.html" class="header__nav-link">เกี่ยวกับเรา</a>
+    </nav>
+    <div class="header__actions">
+      <a href="register.html" class="header__agent-link">สมัครตัวแทน</a>
+      <a href="contact.html" class="btn btn--primary btn--header-cta">ติดต่อเรา</a>
+      <button class="header__hamburger" aria-label="เมนู" type="button"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero hero--home">
+  <div class="hero__bg" style="background-image:url('assets/img/hero-bg.png')"></div>
+  <div class="hero__overlay"></div>
+
+  <div class="hero__curve" aria-hidden="true"></div>
+
+  <nav class="hero__slider-nav" aria-label="สไลด์">
+    <span class="hero__slider-dot hero__slider-dot--ring"></span>
+    <span class="hero__slider-dot active" aria-current="true"></span>
+    <span class="hero__slider-dot"></span>
+    <span class="hero__slider-dot"></span>
+  </nav>
+
+  <div class="container hero__content">
+    <div class="hero__inner">
+    <span class="hero__eyebrow">INNOVATIVE FINANCIAL</span>
+    <h1 class="hero__title">รีบซื้อ ชัวร์กว่า<br>Easy e-Health<br>ลดดอกเบี้ย<br>ปีแรก 12 %</h1>
+    <a href="plan-details.html?id=easy-e-health" class="hero__cta">ซื้อประกันสุขภาพ</a>
+
+    <div class="hero__services">
+      <div class="hero__services-head">
+        <span class="hero__services-label">บริการของเรา</span>
+        <span class="hero__services-line"></span>
+      </div>
+      <div class="hero__services-grid">
+        <a href="#" class="hero__service-card">
+          <span class="hero__service-icon"><i data-lucide="mouse-pointer-click"></i></span>
+          <span class="hero__service-text">ซื้อประกันออนไลน์</span>
+        </a>
+        <a href="#" class="hero__service-card">
+          <span class="hero__service-icon"><i data-lucide="file-text"></i></span>
+          <span class="hero__service-text">ยื่นเคลมออนไลน์</span>
+        </a>
+        <a href="#" class="hero__service-card">
+          <span class="hero__service-icon"><i data-lucide="laptop"></i></span>
+          <span class="hero__service-text">ยื่นกู้กรมธรรม์ออนไลน์</span>
+        </a>
+        <a href="#" class="hero__service-card">
+          <span class="hero__service-icon"><i data-lucide="shield-check"></i></span>
+          <span class="hero__service-text">ซื้อประกันออนไลน์</span>
+        </a>
+        <a href="#" class="hero__service-card">
+          <span class="hero__service-icon"><i data-lucide="crown"></i></span>
+          <span class="hero__service-text">ดูสิทธิพิเศษ</span>
+        </a>
+        <a href="#" class="hero__service-card">
+          <span class="hero__service-icon"><i data-lucide="percent"></i></span>
+          <span class="hero__service-text">จ่ายเบี้ยฯ ง่ายๆ ผ่าน Omne</span>
+        </a>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="hero-fab-wrap" id="heroFabWrap">
+  <div class="hero-fab-panel" id="heroFabPanel" role="dialog" aria-label="ช่องทางติดต่อ" aria-hidden="true">
+    <p class="hero-fab-panel__title">ติดต่อเรา</p>
+    <ul class="hero-fab-panel__list">
+      <li>
+        <a href="https://www.facebook.com/AgentThailandFWD" class="hero-fab-channel hero-fab-channel--facebook" target="_blank" rel="noopener noreferrer">
+          <span class="hero-fab-channel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M24 12.073c0-6.627-5.373-12-12-12S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">Facebook</span>
+            <span class="hero-fab-channel__value">Agent Thailand</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://line.me/ti/p/~@agentthailand" class="hero-fab-channel hero-fab-channel--line" target="_blank" rel="noopener noreferrer">
+          <span class="hero-fab-channel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          </span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">LINE</span>
+            <span class="hero-fab-channel__value">@agentthailand</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.tiktok.com/@agentthailand" class="hero-fab-channel hero-fab-channel--tiktok" target="_blank" rel="noopener noreferrer">
+          <span class="hero-fab-channel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+          </span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">TikTok</span>
+            <span class="hero-fab-channel__value">@agentthailand</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="mailto:me.agentthailand@gmail.com" class="hero-fab-channel hero-fab-channel--email">
+          <span class="hero-fab-channel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">อีเมล</span>
+            <span class="hero-fab-channel__value">me.agentthailand@gmail.com</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="tel:+66656515328" class="hero-fab-channel hero-fab-channel--phone">
+          <span class="hero-fab-channel__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor" focusable="false"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          </span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">โทรศัพท์</span>
+            <span class="hero-fab-channel__value">065-651-5328</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <button type="button" class="hero__fab" id="heroFabBtn" aria-expanded="false" aria-controls="heroFabPanel" aria-label="เปิดช่องทางติดต่อ">
+    <i data-lucide="headphones" aria-hidden="true"></i>
+  </button>
+</div>
+
+<!-- INTRO -->
+<section class="intro-section">
+  <div class="intro-section__canvas" aria-hidden="true">
+    <div class="intro-section__orb intro-section__orb--1"></div>
+    <div class="intro-section__orb intro-section__orb--2"></div>
+    <div class="intro-section__orb intro-section__orb--3"></div>
+    <div class="intro-section__grain"></div>
+  </div>
+  <div class="container">
+    <div class="intro-section__glass">
+      <h2 class="intro-section__title">ประกันชีวิต</h2>
+      <p class="intro-section__text">ประกันชีวิตคือการวางแผนทางการเงินที่สำคัญที่สุดสำหรับคุณและครอบครัว เรามุ่งมั่นให้บริการคำปรึกษาด้านประกันชีวิตที่ครบวงจร ช่วยคุณเลือกแผนที่เหมาะกับไลฟ์สไตล์และงบประมาณ เพื่อให้คุณมั่นใจในทุกช่วงชีวิต ไม่ว่าจะเป็นการสร้างหลักประกัน การออมทรัพย์ หรือการวางแผนเกษียณ พร้อมทีมตัวแทนมืออาชีพที่พร้อมดูแลและให้คำแนะนำตลอดเส้นทาง</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT CATEGORIES -->
+<section class="section section--products">
+  <div class="container container--inset-products">
+    <h2 class="section-title section-title--center">ผลิตภัณฑ์ทั้งหมด</h2>
+    <div class="product-categories">
+      <div class="product-category active">
+        <div class="product-category__icon"><i data-lucide="heart-handshake"></i></div>
+        <div class="product-category__name">ประกันชีวิตและอุบัติเหตุ</div>
+        <a href="plan.html" class="btn btn--primary btn--icon" aria-label="ดูรายละเอียด"><i data-lucide="arrow-right"></i></a>
+      </div>
+      <div class="product-category">
+        <div class="product-category__icon"><i data-lucide="shield-plus"></i></div>
+        <div class="product-category__name">ประกันสุขภาพ</div>
+        <a href="plan.html" class="btn btn--primary btn--icon" aria-label="ดูรายละเอียด"><i data-lucide="arrow-right"></i></a>
+      </div>
+      <div class="product-category">
+        <div class="product-category__icon"><i data-lucide="activity"></i></div>
+        <div class="product-category__name">ประกันโรคร้ายแรง</div>
+        <a href="plan.html" class="btn btn--primary btn--icon" aria-label="ดูรายละเอียด"><i data-lucide="arrow-right"></i></a>
+      </div>
+      <div class="product-category">
+        <div class="product-category__icon"><i data-lucide="chart-no-axes-combined"></i></div>
+        <div class="product-category__name">ประกันชีวิตควบการลงทุน</div>
+        <a href="plan.html" class="btn btn--primary btn--icon" aria-label="ดูรายละเอียด"><i data-lucide="arrow-right"></i></a>
+      </div>
+      <div class="product-category">
+        <div class="product-category__icon"><i data-lucide="wallet"></i></div>
+        <div class="product-category__name">ประกันสะสมทรัพย์</div>
+        <a href="plan.html" class="btn btn--primary btn--icon" aria-label="ดูรายละเอียด"><i data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDED PLANS -->
+<section class="section section--cards section--cards-light section--rec">
+  <div class="container container--inset-default">
+    <div class="section-head">
+      <div>
+        <span class="section-label">ประกัน</span>
+        <h2 class="section-title">แผนประกันแนะนำ</h2>
+      </div>
+    </div>
+    <div class="card-grid card-grid--rec">
+      <article class="plan-card">
+        <div class="plan-card__image">
+          <img src="assets/img/plans/plan-rec-1.jpg" alt="ครอบครัวมีความสุขในสวนสาธารณะ" width="313" height="174" loading="lazy">
+          <span class="plan-card__badge plan-card__badge--discount">รับส่วนลด 4 %</span>
+        </div>
+        <div class="plan-card__body">
+          <h3 class="plan-card__title">Easy e-Health ลดดอกเบี้ย ปีแรก 12%</h3>
+          <p class="plan-card__desc">ประกันสุขภาพออนไลน์ สมัครง่าย คุ้มครองครอบคลุมทั้ง IPD และ OPD ไม่ต้องตรวจสุขภาพก่อนรับประกัน จ่ายเบี้ยเริ่มต้นเพียง 665 บาท/เดือน รับส่วนลดพิเศษปีแรก 12% เมื่อสมัครภายในเดือนนี้</p>
+          <a href="plan-details.html?id=easy-e-health" class="btn plan-card__btn">ดูรายละเอียด</a>
+        </div>
+      </article>
+      <article class="plan-card">
+        <div class="plan-card__image">
+          <img src="assets/img/plans/plan-rec-2.jpg" alt="ครอบครัวนั่งพักผ่อนร่วมกันกลางแจ้ง" width="313" height="174" loading="lazy">
+          <span class="plan-card__badge plan-card__badge--discount">รับส่วนลด 4 %</span>
+        </div>
+        <div class="plan-card__body">
+          <h3 class="plan-card__title">FWD Life Protection Plus</h3>
+          <p class="plan-card__desc">คุ้มครองชีวิตและสุขภาพครบวงจร ด้วยเบี้ยประกันที่เหมาะสมกับทุกวัย ครอบคลุมค่ารักษา ค่าห้อง ICU และผลประโยชน์กรณีเสียชีวิต ปรับแผนความคุ้มครองได้ตามช่วงชีวิตของคุณ</p>
+          <a href="plan.html" class="btn plan-card__btn">ดูรายละเอียด</a>
+        </div>
+      </article>
+      <article class="plan-card">
+        <div class="plan-card__image">
+          <img src="assets/img/plans/plan-rec-3.jpg" alt="คู่รักวางแผนการเงินและอนาคตร่วมกัน" width="313" height="174" loading="lazy">
+        </div>
+        <div class="plan-card__body">
+          <h3 class="plan-card__title">Smart Saving Plan</h3>
+          <p class="plan-card__desc">ออมทรัพย์พร้อมความคุ้มครอง สร้างอนาคตที่มั่นคงให้ครอบครัวของคุณ รับเงินคืนตามระยะเวลาที่กำหนด พร้อมโบนัสพิเศษเมื่อครบสัญญา วางแผนเกษียณได้อย่างมั่นใจ</p>
+          <a href="plan.html" class="btn plan-card__btn">ดูรายละเอียด</a>
+        </div>
+      </article>
+      <article class="plan-card">
+        <div class="plan-card__image">
+          <img src="assets/img/plans/plan-rec-4.jpg" alt="แพทย์ให้คำปรึกษาด้านสุขภาพ" width="313" height="174" loading="lazy">
+        </div>
+        <div class="plan-card__body">
+          <h3 class="plan-card__title">Critical Illness Cover</h3>
+          <p class="plan-card__desc">คุ้มครองโรคร้ายแรง 40 โรค จ่ายเงินทันทีเมื่อวินิจฉัย ไม่ต้องส่งใบเสร็จ ใช้เงินก้อนนี้ดูแลครอบครัวได้อย่างอิสระ ลดภาระค่าใช้จ่ายในช่วงเวลาที่สำคัญ</p>
+          <a href="plan.html" class="btn plan-card__btn">ดูรายละเอียด</a>
+        </div>
+      </article>
+    </div>
+    <a href="plan.html" class="section-view-all">ดูแบบประกันทั้งหมด</a>
+  </div>
+</section>
+
+<!-- CONSULT FORM -->
+<section class="consult-section">
+  <div class="container container--inset-default">
+    <div class="consult-card">
+      <div class="consult-card__head">
+        <h2 class="consult-card__title">ปรึกษาผู้เชี่ยวชาญประกันชีวิต</h2>
+      </div>
+      <form class="consult-form">
+        <div class="consult-form__layout">
+          <div class="consult-form__main">
+            <div class="consult-form__fields">
+              <div class="form-group">
+                <label for="consult-insurance">ประกันที่สนใจ</label>
+                <select id="consult-insurance" class="form-control" name="insurance">
+                  <option>สุขภาพระยะยาว 20 ปี</option>
+                  <option>ประกันชีวิตและอุบัติเหตุ</option>
+                  <option>ประกันสุขภาพ</option>
+                  <option>ประกันโรคร้ายแรง</option>
+                </select>
+              </div>
+
+              <div class="consult-form__row consult-form__row--half">
+                <div class="form-group">
+                  <label for="consult-firstname">ชื่อ</label>
+                  <input id="consult-firstname" type="text" class="form-control" name="firstname" placeholder="ชื่อ">
+                </div>
+                <div class="form-group">
+                  <label for="consult-lastname">นามสกุล</label>
+                  <input id="consult-lastname" type="text" class="form-control" name="lastname" placeholder="นามสกุล">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="consult-province">จังหวัด</label>
+                <select id="consult-province" class="form-control" name="province">
+                  <option value="">เลือกจังหวัด</option>
+                  <option>กรุงเทพมหานคร</option>
+                  <option>เชียงใหม่</option>
+                  <option>ขอนแก่น</option>
+                  <option>ภูเก็ต</option>
+                </select>
+                <p class="form-hint">เลือกจังหวัดที่คุณอาศัยอยู่ เพื่อให้ตัวแทนในพื้นที่ติดต่อกลับ</p>
+              </div>
+
+              <div class="consult-form__row consult-form__row--half">
+                <div class="form-group">
+                  <label for="consult-age">อายุ</label>
+                  <input id="consult-age" type="text" class="form-control" name="age" placeholder="อายุ">
+                </div>
+                <div class="form-group">
+                  <label for="consult-email">อีเมล</label>
+                  <input id="consult-email" type="email" class="form-control" name="email" placeholder="กรอกอีเมล">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="consult-phone">เบอร์โทรศัพท์</label>
+                <input id="consult-phone" type="tel" class="form-control" name="phone" placeholder="099 999 9999">
+              </div>
+            </div>
+
+            <h3 class="consult-form__section-title">เวลาที่สะดวกในการติดต่อกลับ<span class="consult-form__required">*</span></h3>
+            <div class="consult-time-options">
+              <label class="consult-time-option">
+                <input type="radio" name="contact_time" value="now" class="consult-time-option__input" checked>
+                <span class="consult-time-option__body">
+                  <span class="consult-time-option__radio" aria-hidden="true"></span>
+                  <span class="consult-time-option__content">
+                    <span class="consult-time-option__title">ติดต่อทันที</span>
+                    <span class="consult-time-option__desc">ตัวแทนจะโทรกลับภายใน 30 นาที</span>
+                  </span>
+                </span>
+              </label>
+              <label class="consult-time-option">
+                <input type="radio" name="contact_time" value="09-12" class="consult-time-option__input">
+                <span class="consult-time-option__body">
+                  <span class="consult-time-option__radio" aria-hidden="true"></span>
+                  <span class="consult-time-option__content">
+                    <span class="consult-time-option__title">09 : 00 - 12 : 00</span>
+                    <span class="consult-time-option__desc">ช่วงเช้า วันจันทร์ - ศุกร์</span>
+                  </span>
+                </span>
+              </label>
+              <label class="consult-time-option consult-time-option--disabled">
+                <input type="radio" name="contact_time" value="13-16" class="consult-time-option__input" disabled>
+                <span class="consult-time-option__body">
+                  <span class="consult-time-option__radio" aria-hidden="true"></span>
+                  <span class="consult-time-option__content">
+                    <span class="consult-time-option__title">13 : 00 - 16 : 00</span>
+                    <span class="consult-time-option__desc">ช่วงบ่าย (เต็มแล้ววันนี้)</span>
+                  </span>
+                </span>
+              </label>
+              <label class="consult-time-option consult-time-option--disabled">
+                <input type="radio" name="contact_time" value="16-19" class="consult-time-option__input" disabled>
+                <span class="consult-time-option__body">
+                  <span class="consult-time-option__radio" aria-hidden="true"></span>
+                  <span class="consult-time-option__content">
+                    <span class="consult-time-option__title">16 : 00 - 19 : 00</span>
+                    <span class="consult-time-option__desc">ช่วงเย็น (เต็มแล้ววันนี้)</span>
+                  </span>
+                </span>
+              </label>
+            </div>
+
+            <div class="form-group consult-form__message">
+              <label for="consult-message">ข้อความเพิ่มเติม</label>
+              <textarea id="consult-message" class="form-control" name="message" rows="4" placeholder="ระบุความต้องการหรือคำถามเพิ่มเติม (ถ้ามี)"></textarea>
+            </div>
+          </div>
+
+          <aside class="consult-form__aside">
+            <div class="consult-aside-panel">
+              <div class="consult-aside-card__media">
+                <img src="assets/img/consult-advisor.jpg" alt="ผู้เชี่ยวชาญให้คำปรึกษาประกันชีวิต" width="484" height="280" loading="lazy">
+              </div>
+              <div class="consult-aside-card">
+                <h3 class="consult-aside-card__title">เลือกปรึกษาผู้เชี่ยวชาญที่เหมาะกับคุณ</h3>
+                <p class="consult-aside-card__text">บริการให้คำปรึกษาด้านประกันชีวิตครบวงจร ช่วยคุณเลือกแผนที่เหมาะกับไลฟ์สไตล์และงบประมาณ พร้อมติดต่อกลับตามเวลาที่คุณสะดวก</p>
+                <ul class="consult-aside-card__list">
+                  <li>
+                    <i data-lucide="circle-check"></i>
+                    <span>ทีมตัวแทนมืออาชีพทั่วประเทศ</span>
+                  </li>
+                  <li>
+                    <i data-lucide="circle-check"></i>
+                    <span>คำแนะนำแผนประกันที่เหมาะกับไลฟ์สไตล์</span>
+                  </li>
+                  <li>
+                    <i data-lucide="circle-check"></i>
+                    <span>ติดต่อกลับตามเวลาที่คุณสะดวก</span>
+                  </li>
+                </ul>
+                <a href="#" class="consult-aside-card__link">รายละเอียดและเงื่อนไข <i data-lucide="external-link"></i></a>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="consult-form__divider"></div>
+
+        <div class="consult-form__actions">
+          <div class="consult-form__actions-left">
+            <label class="consult-form__consent">
+              <input type="checkbox" name="consent">
+              <span class="consult-form__consent-text">
+                ยอมรับในการเก็บข้อมูล เพื่อส่งข้อความ
+                <a href="#" class="consult-form__terms" role="button">รายละเอียดและเงื่อนไข</a>
+              </span>
+            </label>
+          </div>
+          <div class="consult-form__buttons">
+            <button type="button" class="btn btn--consult-cancel">ยกเลิก</button>
+            <button type="submit" class="btn btn--consult-submit">ส่งข้อมูล</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="consult-terms-modal" id="consultTermsModal" aria-hidden="true">
+  <div class="consult-terms-modal__backdrop" data-close-terms aria-label="ปิด"></div>
+  <div class="consult-terms-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="consultTermsTitle">
+    <div class="consult-terms-modal__header">
+      <h2 id="consultTermsTitle">รายละเอียดและเงื่อนไข</h2>
+      <button type="button" class="consult-terms-modal__close" data-close-terms aria-label="ปิด">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <div class="consult-terms-modal__body">
+      <p>เมื่อท่านกรอกข้อมูลและกดส่งแบบฟอร์มปรึกษา ถือว่าท่านยินยอมให้ตัวแทน FWD ประกันชีวิต เก็บ ใช้ และเปิดเผยข้อมูลส่วนบุคคลของท่านตามรายละเอียดด้านล่าง</p>
+      <h3>1. ข้อมูลที่เก็บรวบรวม</h3>
+      <p>ชื่อ-นามสกุล หมายเลขโทรศัพท์ อีเมล ประเภทประกันที่สนใจ และข้อความที่ท่านระบุในแบบฟอร์ม</p>
+      <h3>2. วัตถุประสงค์ในการใช้ข้อมูล</h3>
+      <ol>
+        <li>ติดต่อกลับเพื่อให้คำปรึกษาและเสนอแผนประกันที่เหมาะสม</li>
+        <li>นัดหมายและติดตามผลการให้บริการ</li>
+        <li>ส่งข้อมูล โปรโมชั่น หรือข่าวสารที่เกี่ยวข้อง (เมื่อท่านยินยอม)</li>
+      </ol>
+      <h3>3. ระยะเวลาในการเก็บรักษา</h3>
+      <p>ข้อมูลจะถูกเก็บไว้ตามระยะเวลาที่จำเป็นเพื่อให้บรรลุวัตถุประสงค์ข้างต้น หรือตามที่กฎหมายกำหนด</p>
+      <h3>4. สิทธิของเจ้าของข้อมูล</h3>
+      <p>ท่านมีสิทธิขอเข้าถึง แก้ไข ลบ หรือถอนความยินยอมได้ โดยติดต่อตัวแทนผ่านช่องทางที่ระบุในเว็บไซต์</p>
+      <h3>5. การเปิดเผยข้อมูล</h3>
+      <p>ข้อมูลของท่านจะไม่ถูกเปิดเผยต่อบุคคลภายนอก เว้นแต่เป็นไปเพื่อให้บริการตามที่ท่านร้องขอ หรือตามที่กฎหมายกำหนด</p>
+    </div>
+    <div class="consult-terms-modal__footer">
+      <button type="button" class="btn btn--consult-submit consult-terms-modal__accept" data-close-terms>รับทราบ</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURE -->
+<section class="section feature-section" aria-labelledby="feature-section-title">
+  <div class="container container--inset-default">
+    <div class="feature-panel">
+      <div class="feature-grid">
+        <div class="feature-grid__visual">
+          <div class="feature-grid__image">
+            <img src="assets/img/feature-advisor.png" alt="ที่ปรึกษาประกันพร้อมให้บริการ" width="600" height="434" loading="lazy">
+          </div>
+          <div class="feature-grid__badge" aria-hidden="true">
+            <span class="feature-grid__badge-value">10+</span>
+            <span class="feature-grid__badge-label">ปีประสบการณ์<br>ให้คำปรึกษา</span>
+          </div>
+        </div>
+
+        <div class="feature-grid__content">
+          <span class="feature-grid__label">ประสบการณ์ที่ดีกว่า</span>
+          <h2 id="feature-section-title" class="feature-grid__title">ให้การประกันเป็นเรื่องง่ายด้วย</h2>
+          <p class="feature-grid__lead">Agent Thailand ช่วยให้คุณเข้าใจแผนประกัน เปรียบเทียบความคุ้มครอง และตัดสินใจได้อย่างมั่นใจ — ด้วยทีมที่ปรึกษาและผลิตภัณฑ์ FWD ที่ครบทุกความต้องการ</p>
+
+          <div class="feature-cards">
+            <article class="feature-card">
+              <span class="feature-card__icon"><i data-lucide="user-check" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="feature-card__title">คำปรึกษาเฉพาะบุคคล</h3>
+                <p class="feature-card__text">วิเคราะห์ความต้องการและงบประมาณ เพื่อแนะนำแผนที่เหมาะกับคุณ</p>
+              </div>
+            </article>
+            <article class="feature-card">
+              <span class="feature-card__icon"><i data-lucide="file-check" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="feature-card__title">ขั้นตอนชัดเจน</h3>
+                <p class="feature-card__text">อธิบายความคุ้มครองและเงื่อนไขอย่างเข้าใจง่าย ไม่ซับซ้อน</p>
+              </div>
+            </article>
+            <article class="feature-card">
+              <span class="feature-card__icon"><i data-lucide="headphones" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="feature-card__title">ดูแลหลังการขาย</h3>
+                <p class="feature-card__text">ช่วยเรื่องกรมธรรม์ การเคลม และการปรับแผนเมื่อชีวิตเปลี่ยน</p>
+              </div>
+            </article>
+            <article class="feature-card">
+              <span class="feature-card__icon"><i data-lucide="layout-grid" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="feature-card__title">ครบทุกหมวดประกัน</h3>
+                <p class="feature-card__text">สุขภาพ ชีวิต ออมทรัพย์ และการลงทุน ในที่เดียว</p>
+              </div>
+            </article>
+          </div>
+
+          <div class="feature-grid__actions">
+            <a href="about-us.html" class="btn btn--feature-cta">ดูเพิ่มเติม</a>
+            <a href="contact.html" class="feature-grid__link">นัดปรึกษาฟรี <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-cta" aria-labelledby="home-cta-title">
+      <div class="about-cta__card">
+        <div class="about-cta__copy">
+          <h2 id="home-cta-title" class="about-cta__title">พร้อมวางแผนความคุ้มครองกับเราแล้วหรือยัง?</h2>
+          <p class="about-cta__text">ปรึกษาฟรีกับทีมงาน Agent Thailand หรือสมัครเป็นตัวแทนเพื่อร่วมเติบโตไปกับเรา</p>
+        </div>
+        <div class="about-cta__actions">
+          <a href="contact.html" class="btn btn--primary btn--lg">นัดปรึกษาฟรี</a>
+          <a href="register.html" class="btn btn--outline btn--lg about-cta__btn-outline">สมัครเป็นตัวแทน</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<!-- STANDARD FOOTER -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="container container--inset-footer">
+      <div class="footer__main">
+        <div class="footer__brand-col">
+          <a href="index.html" class="logo logo--lg footer__logo">
+            <img src="assets/img/logo.png" alt="Agent Thailand" class="logo__img" width="183" height="78">
+            <div class="logo__text">
+              <span class="logo__brand"><span class="logo__brand-agent">AGENT</span> <span class="logo__brand-thailand">THAILAND</span></span>
+              <span class="logo__sub">ตัวแทน FWD ประกันชีวิต</span>
+            </div>
+          </a>
+          <p class="footer__tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
+          <ul class="footer__contact-list">
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
+              <span>สำนักงานตัวแทน FWD (สาขารามอินทรา)<br>123/45 ถนนรามอินทรา แขวงอนุสาวรีย์<br>เขตบางเขน กรุงเทพมหานคร 10220</span>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
+              <a href="mailto:me.agentthailand@gmail.com">me.agentthailand@gmail.com</a>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="phone"></i></span>
+              <span>
+                <a href="tel:+66656515328">065-651-5328</a>
+                <span class="footer__contact-sep">/</span>
+                <a href="tel:+6621164915">02-116-4915</a>
+              </span>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="clock"></i></span>
+              <span>จันทร์–ศุกร์ 09:00–18:00 น. · เสาร์ 09:00–12:00 น.</span>
+            </li>
+          </ul>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link social-fb" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+            <a href="#" class="footer__social-link social-line" aria-label="Line"><i data-lucide="message-circle"></i></a>
+            <a href="#" class="footer__social-link social-yt" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+            <a href="#" class="footer__social-link social-ig" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" class="footer__social-link social-tt" aria-label="TikTok"><i data-lucide="music-2"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">แบบประกัน</h4>
+          <ul class="footer__links">
+            <li><a href="plan.html">แบบประกันทั้งหมด</a></li>
+            <li><a href="plan.html?category=life-accident">ประกันชีวิตและอุบัติเหตุ</a></li>
+            <li><a href="plan.html?category=health">ประกันสุขภาพ</a></li>
+            <li><a href="plan.html?category=health-20">สุขภาพระยะยาว 20 ปี</a></li>
+            <li><a href="plan.html?category=critical">ประกันโรคร้ายแรง</a></li>
+            <li><a href="plan.html?category=investment-linked">ประกันชีวิตควบการลงทุน</a></li>
+            <li><a href="plan.html?category=savings">ประกันสะสมทรัพย์</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">บริการลูกค้า</h4>
+          <ul class="footer__links">
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+            <li><a href="hospitals.html">โรงพยาบาลในเครือ</a></li>
+            <li><a href="contact.html">แจ้งเคลม / สอบถามกรมธรรม์</a></li>
+            <li><a href="faq.html">คำถามที่พบบ่อย</a></li>
+            <li><a href="promotion.html">โปรโมชั่นและสิทธิพิเศษ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Agent Thailand</h4>
+          <ul class="footer__links">
+            <li><a href="about-us.html">เกี่ยวกับเรา</a></li>
+            <li><a href="blog.html">บทความและความรู้</a></li>
+            <li><a href="register.html">สมัครเป็นตัวแทน</a></li>
+            <li><a href="login.html">เข้าสู่ระบบตัวแทน</a></li>
+          </ul>
+          <a href="contact.html" class="footer__cta">นัดปรึกษาฟรี</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <div class="footer__bottom-inner">
+        <p class="footer__copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
+        <nav class="footer__legal" aria-label="ข้อกำหนดทางกฎหมาย">
+          <a href="#">นโยบายความเป็นส่วนตัว</a>
+          <a href="#">ข้อกำหนดการใช้งาน</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@0.477.0"></script>
+<script src="assets/js/hero-form-data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

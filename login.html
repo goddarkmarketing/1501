@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เข้าสู่ระบบ - Agent Thailand</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/site-chrome.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="logo logo--header">
+      <img src="assets/img/logo.png" alt="Agent Thailand" class="logo__img" width="183" height="78">
+    </a>
+    <nav class="header__nav">
+      <a href="index.html" class="header__nav-link">หน้าแรก</a>
+<div class="header__nav-item header__nav-item--dropdown" data-nav-menu="products">
+        <button type="button" class="header__nav-link header__nav-link--dropdown" aria-expanded="false" aria-haspopup="true">
+          ผลิตภัณฑ์ทั้งหมด
+          <i data-lucide="chevron-down" class="header__nav-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="header__nav-submenu" role="menu"></div>
+      </div>
+      <a href="promotion.html" class="header__nav-link">โปรโมชั่น</a>
+      <a href="blog.html" class="header__nav-link">บทความ</a>
+            <div class="header__nav-item header__nav-item--dropdown" data-nav-menu="services">
+        <button type="button" class="header__nav-link header__nav-link--dropdown" aria-expanded="false" aria-haspopup="true">
+          บริการลูกค้า
+          <i data-lucide="chevron-down" class="header__nav-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="header__nav-submenu" role="menu"></div>
+      </div>
+      <a href="about-us.html" class="header__nav-link">เกี่ยวกับเรา</a>
+    </nav>
+    <div class="header__actions">
+      <a href="register.html" class="header__agent-link">สมัครตัวแทน</a>
+      <a href="contact.html" class="btn btn--primary btn--header-cta">ติดต่อเรา</a>
+      <button class="header__hamburger" aria-label="เมนู" type="button"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<section class="auth-section">
+  <div class="auth-card">
+    <h1 class="auth-card__title">เข้าสู่ระบบ</h1>
+    <form>
+      <div class="form-group">
+        <label>อีเมล / ชื่อผู้ใช้</label>
+        <input type="text" class="form-control" placeholder="@gmail.com">
+      </div>
+      <div class="form-group">
+        <label>รหัสผ่าน</label>
+        <div style="position:relative;">
+          <input type="password" id="password" class="form-control" placeholder="••••••••" style="padding-right:40px;">
+          <button type="button" class="password-toggle" data-target="password" aria-label="แสดงรหัสผ่าน"><i data-lucide="eye"></i></button>
+        </div>
+      </div>
+      <div class="auth-card__links">
+        <a href="#">ลืมรหัสผ่าน</a>
+        <a href="register.html">สมัครสมาชิก</a>
+      </div>
+      <label class="form-check"><input type="checkbox"> บันทึกรหัสผ่าน</label>
+      <button type="submit" class="btn btn--gray btn--full btn--lg">เข้าสู่ระบบ</button>
+    </form>
+  </div>
+</section>
+
+<!-- STANDARD FOOTER -->
+<footer class="footer">
+  <div class="footer__top">
+    <div class="container container--inset-footer">
+      <div class="footer__main">
+        <div class="footer__brand-col">
+          <a href="index.html" class="logo logo--lg footer__logo">
+            <img src="assets/img/logo.png" alt="Agent Thailand" class="logo__img" width="183" height="78">
+            <div class="logo__text">
+              <span class="logo__brand"><span class="logo__brand-agent">AGENT</span> <span class="logo__brand-thailand">THAILAND</span></span>
+              <span class="logo__sub">ตัวแทน FWD ประกันชีวิต</span>
+            </div>
+          </a>
+          <p class="footer__tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
+          <ul class="footer__contact-list">
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
+              <span>สำนักงานตัวแทน FWD (สาขารามอินทรา)<br>123/45 ถนนรามอินทรา แขวงอนุสาวรีย์<br>เขตบางเขน กรุงเทพมหานคร 10220</span>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
+              <a href="mailto:me.agentthailand@gmail.com">me.agentthailand@gmail.com</a>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="phone"></i></span>
+              <span>
+                <a href="tel:+66656515328">065-651-5328</a>
+                <span class="footer__contact-sep">/</span>
+                <a href="tel:+6621164915">02-116-4915</a>
+              </span>
+            </li>
+            <li class="footer__contact-item">
+              <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="clock"></i></span>
+              <span>จันทร์–ศุกร์ 09:00–18:00 น. · เสาร์ 09:00–12:00 น.</span>
+            </li>
+          </ul>
+          <div class="footer__social">
+            <a href="#" class="footer__social-link social-fb" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+            <a href="#" class="footer__social-link social-line" aria-label="Line"><i data-lucide="message-circle"></i></a>
+            <a href="#" class="footer__social-link social-yt" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+            <a href="#" class="footer__social-link social-ig" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="#" class="footer__social-link social-tt" aria-label="TikTok"><i data-lucide="music-2"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">แบบประกัน</h4>
+          <ul class="footer__links">
+            <li><a href="plan.html">แบบประกันทั้งหมด</a></li>
+            <li><a href="plan.html?category=life-accident">ประกันชีวิตและอุบัติเหตุ</a></li>
+            <li><a href="plan.html?category=health">ประกันสุขภาพ</a></li>
+            <li><a href="plan.html?category=health-20">สุขภาพระยะยาว 20 ปี</a></li>
+            <li><a href="plan.html?category=critical">ประกันโรคร้ายแรง</a></li>
+            <li><a href="plan.html?category=investment-linked">ประกันชีวิตควบการลงทุน</a></li>
+            <li><a href="plan.html?category=savings">ประกันสะสมทรัพย์</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">บริการลูกค้า</h4>
+          <ul class="footer__links">
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+            <li><a href="hospitals.html">โรงพยาบาลในเครือ</a></li>
+            <li><a href="contact.html">แจ้งเคลม / สอบถามกรมธรรม์</a></li>
+            <li><a href="faq.html">คำถามที่พบบ่อย</a></li>
+            <li><a href="promotion.html">โปรโมชั่นและสิทธิพิเศษ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Agent Thailand</h4>
+          <ul class="footer__links">
+            <li><a href="about-us.html">เกี่ยวกับเรา</a></li>
+            <li><a href="blog.html">บทความและความรู้</a></li>
+            <li><a href="register.html">สมัครเป็นตัวแทน</a></li>
+            <li><a href="login.html">เข้าสู่ระบบตัวแทน</a></li>
+          </ul>
+          <a href="contact.html" class="footer__cta">นัดปรึกษาฟรี</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <div class="footer__bottom-inner">
+        <p class="footer__copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
+        <nav class="footer__legal" aria-label="ข้อกำหนดทางกฎหมาย">
+          <a href="#">นโยบายความเป็นส่วนตัว</a>
+          <a href="#">ข้อกำหนดการใช้งาน</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/lucide@0.477.0"></script>
+<script src="assets/js/hero-form-data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

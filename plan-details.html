@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>รายละเอียดแผนประกัน - Agent Thailand</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/site-chrome.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="logo logo--header">
+      <img src="assets/img/logo.png" alt="Agent Thailand" class="logo__img" width="183" height="78">
+    </a>
+    <nav class="header__nav">
+      <a href="index.html" class="header__nav-link">หน้าแรก</a>
+      <div class="header__nav-item header__nav-item--dropdown is-active" data-nav-menu="products">
+        <button type="button" class="header__nav-link header__nav-link--dropdown active" aria-expanded="false" aria-haspopup="true">
+          ผลิตภัณฑ์ทั้งหมด
+          <i data-lucide="chevron-down" class="header__nav-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="header__nav-submenu" role="menu"></div>
+      </div>
+      <a href="promotion.html" class="header__nav-link">โปรโมชั่น</a>
+      <a href="blog.html" class="header__nav-link">บทความ</a>
+      <div class="header__nav-item header__nav-item--dropdown" data-nav-menu="services">
+        <button type="button" class="header__nav-link header__nav-link--dropdown" aria-expanded="false" aria-haspopup="true">
+          บริการลูกค้า
+          <i data-lucide="chevron-down" class="header__nav-chevron" aria-hidden="true"></i>
+        </button>
+        <div class="header__nav-submenu" role="menu"></div>
+      </div>
+      <a href="about-us.html" class="header__nav-link">เกี่ยวกับเรา</a>
+    </nav>
+    <div class="header__actions">
+      <a href="register.html" class="header__agent-link">สมัครตัวแทน</a>
+      <a href="contact.html" class="btn btn--primary btn--header-cta">ติดต่อเรา</a>
+      <button class="header__hamburger" aria-label="เมนู" type="button"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<main id="planDetail">
+  <section class="fwd-plan-banner">
+    <img src="" alt="" class="fwd-plan-banner__image" data-plan-hero-image width="1920" height="640">
+    <div class="fwd-plan-banner__overlay" aria-hidden="true"></div>
+    <div class="container fwd-plan-banner__content">
+      <nav class="fwd-plan-breadcrumb" aria-label="breadcrumb">
+        <a href="index.html">หน้าแรก</a>
+        <span aria-hidden="true">/</span>
+        <a href="plan.html">ผลิตภัณฑ์ทั้งหมด</a>
+        <span aria-hidden="true">/</span>
+        <a href="#" data-plan-category-link data-plan-category>ประกันสุขภาพ</a>
+        <span aria-hidden="true">/</span>
+        <span data-plan-name>กำลังโหลด...</span>
+      </nav>
+      <p class="fwd-plan-banner__tagline" data-plan-tagline>ประกันสุขภาพเหมาจ่าย</p>
+      <h1 class="fwd-plan-banner__title"><span data-plan-name>กำลังโหลด...</span></h1>
+      <h2 class="fwd-plan-banner__headline" data-plan-headline>กำลังโหลดรายละเอียด...</h2>
+      <ul class="fwd-plan-banner__benefits" data-plan-benefits></ul>
+    </div>
+  </section>
+
+  <section class="fwd-plan-quote" id="QuoteWidgetContainer">
+    <div class="container fwd-plan-quote__wrap">
+      <div class="fwd-plan-quote__grid">
+        <div class="fwd-plan-quote__form">
+          <h3 class="fwd-plan-quote__title">ดูเบี้ยประกันของคุณ</h3>
+          <div class="fwd-plan-quote__field">
+            <p class="fwd-plan-quote__label">ฉันเป็น</p>
+            <div class="fwd-plan-gender" role="radiogroup" aria-label="เพศ">
+              <button type="button" class="fwd-plan-gender__btn is-active" data-gender="male" aria-pressed="true">
+                <img src="assets/img/plan-detail/male_20231121.svg" alt="" width="32" height="32">
+                <span>ผู้ชาย</span>
+              </button>
+              <button type="button" class="fwd-plan-gender__btn" data-gender="female" aria-pressed="false">
+                <img src="assets/img/plan-detail/female_20231121.svg" alt="" width="32" height="32">
+                <span>ผู้หญิง</span>
+              </button>
+            </div>
+          </div>
+          <div class="fwd-plan-quote__field">
+            <label class="fwd-plan-quote__label" for="planAge">อายุ</label>
+            <input type="number" id="planAge" class="fwd-plan-quote__input" value="30" min="1" max="99" inputmode="numeric">
+          </div>
+          <div class="fwd-plan-quote__promo" data-plan-promo-inline></div>
+          <hr class="fwd-plan-quote__divider">
+          <h4 class="fwd-plan-quote__subtitle">สิ่งที่ต้องใช้ในการสมัคร</h4>
+          <div class="fwd-plan-req-list" data-plan-requirements></div>
+          <div class="fwd-plan-quote__payments" aria-label="ช่องทางชำระเงิน">
+            <img src="assets/img/plan-detail/visa.svg" alt="Visa" width="40" height="24">
+            <img src="assets/img/plan-detail/master.svg" alt="Mastercard" width="40" height="24">
+            <img src="assets/img/plan-detail/ThaiQR_1_H24px.svg" alt="Thai QR Payment" width="40" height="24">
+          </div>
+          <p class="fwd-plan-quote__disclaimer">ผู้ซื้อควรทำความเข้าใจรายละเอียดความคุ้มครองและเงื่อนไขก่อนตัดสินใจทำประกันทุกครั้ง</p>
+        </div>
+        <div class="fwd-plan-quote__plans">
+          <h3 class="fwd-plan-quote__title">เลือกแผนประกัน</h3>
+          <div class="fwd-plan-widget" data-plan-quote-widget></div>
+          <a href="#section-compare" class="fwd-plan-quote__compare-link">เปรียบเทียบแผนความคุ้มครอง</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fwd-plan-content">
+    <div class="container fwd-plan-content__grid">
+      <aside class="fwd-plan-content__nav-wrap">
+        <nav class="fwd-plan-content__nav" data-plan-section-nav aria-label="สารบัญรายละเอียด"></nav>
+      </aside>
+      <div class="fwd-plan-content__main">
+        <section id="section-highlights" class="fwd-plan-section" data-plan-section="highlights">
+          <h2 class="fwd-plan-section__title">จุดเด่นของแผนประกันนี้</h2>
+          <div class="fwd-plan-highlights" data-plan-highlights></div>
+        </section>
+        <section id="section-compare" class="fwd-plan-section" data-plan-section="compare">
+          <h2 class="fwd-plan-section__title">เปรียบเทียบแผนความคุ้มครอง</h2>
+          <div class="fwd-plan-table-wrap" data-plan-coverage-table></div>
+        </section>
+        <section id="section-promo" class="fwd-plan-section" data-plan-section="promo">
+          <h2 class="fwd-plan-section__title" data-plan-promo-title>โปรโมชัน</h2>
+          <div class="fwd-plan-promo-detail" data-plan-promo-detail></div>
+        </section>
+        <section id="section-conditions" class="fwd-plan-section" data-plan-section="conditions">
+          <h2 class="fwd-plan-section__title">รายละเอียดและเงื่อนไขกรมธรรม์</h2>
+          <ul class="fwd-plan-conditions" data-plan-conditions></ul>
+        </section>
+        <section id="section-renewal" class="fwd-plan-section" data-plan-section="renewal">
+          <h2 class="fwd-plan-section__title">การต่ออายุ</h2>
+          <ul class="fwd-plan-list" data-plan-renewal></ul>
+        </section>
+        <section id="section-why" class="fwd-plan-section" data-plan-section="why">
+          <h2 class="fwd-plan-section__title" data-plan-why-title>ทำไมต้องมีประกันนี้?</h2>
+          <ul class="fwd-plan-list" data-plan-why></ul>
+        </section>
+        <section id="section-faq" class="fwd-plan-section" data-plan-section="faq">
+          <h2 class="fwd-plan-section__title">คำถามที่พบบ่อย (FAQ)</h2>
+          <div class="fwd-plan-faqs" data-plan-faqs></div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--plan-detail-related">
+    <div class="container">
+      <h2 class="fwd-plan-section__title">แผนประกันที่เกี่ยวข้อง</h2>
+      <div class="plan-related__grid card-grid card-grid--rec" id="planRelatedGrid"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <div class="container container--inset-footer">
+      <div class="footer__main">
+        <div class="footer__brand-col">
+          <a href="index.html" class="logo logo--lg footer__logo">
+            <img src="assets/img/logo.png" alt="Agent Thailand" class="logo__img" width="183" height="78">
+            <div class="logo__text">
+              <span class="logo__brand"><span class="logo__brand-agent">AGENT</span> <span class="logo__brand-thailand">THAILAND</span></span>
+              <span class="logo__sub">ตัวแทน FWD ประกันชีวิต</span>
+            </div>
+          </a>
+          <p class="footer__tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">แบบประกัน</h4>
+          <ul class="footer__links">
+            <li><a href="plan.html">แบบประกันทั้งหมด</a></li>
+            <li><a href="plan-details.html?id=easy-e-health">Easy E-Health</a></li>
+            <li><a href="plan.html?category=health">ประกันสุขภาพ</a></li>
+            <li><a href="plan.html?category=critical">ประกันโรคร้ายแรง</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">บริการลูกค้า</h4>
+          <ul class="footer__links">
+            <li><a href="contact.html">ติดต่อเรา</a></li>
+            <li><a href="hospitals.html">โรงพยาบาลในเครือ</a></li>
+            <li><a href="faq.html">คำถามที่พบบ่อย</a></li>
+            <li><a href="promotion.html">โปรโมชั่นและสิทธิพิเศษ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Agent Thailand</h4>
+          <ul class="footer__links">
+            <li><a href="about-us.html">เกี่ยวกับเรา</a></li>
+            <li><a href="blog.html">บทความและความรู้</a></li>
+            <li><a href="register.html">สมัครเป็นตัวแทน</a></li>
+          </ul>
+          <a href="contact.html" class="footer__cta">นัดปรึกษาฟรี</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <div class="container">
+      <div class="footer__bottom-inner">
+        <p class="footer__copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
+        <nav class="footer__legal" aria-label="ข้อกำหนดทางกฎหมาย">
+          <a href="#">นโยบายความเป็นส่วนตัว</a>
+          <a href="#">ข้อกำหนดการใช้งาน</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://unpkg.com/lucide@0.477.0"></script>
+<script src="assets/js/hero-form-data.js"></script>
+<script src="assets/js/plan-data.js"></script>
+<script src="assets/js/plan-detail.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
