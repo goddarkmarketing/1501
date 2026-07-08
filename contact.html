@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/home.css">
   <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
-<body>
+<body data-page="contact">
 
 <header class="header">
   <div class="container header__inner">
@@ -47,7 +47,7 @@
 
 <main id="contactPage">
   <section class="plan-cat-hero">
-    <img src="assets/img/hero/ติดต่อเรา.png" alt="" class="plan-cat-hero__image" width="2243" height="701">
+    <img src="assets/img/hero/ติดต่อเรา.png" alt="" class="plan-cat-hero__image" data-content-src="hero_image" width="2243" height="701">
     <div class="container plan-cat-hero__content">
       <nav class="fwd-plan-breadcrumb plan-cat-hero__breadcrumb" aria-label="breadcrumb">
         <a href="index.html">หน้าแรก</a>
@@ -59,41 +59,38 @@
           <i data-lucide="headset" aria-hidden="true"></i>
         </div>
         <p class="plan-cat-hero__eyebrow">บริการลูกค้า</p>
-        <h1 class="plan-cat-hero__title">ติดต่อเรา</h1>
-        <p class="plan-cat-hero__headline">ปรึกษาผู้เชี่ยวชาญประกันชีวิต แจ้งเคลม หรือสอบถามกรมธรรม์ — กรอกแบบฟอร์มด้านล่าง ทีมงานจะติดต่อกลับตามเวลาที่คุณสะดวก</p>
+        <h1 class="plan-cat-hero__title" data-content="hero_title">ติดต่อเรา</h1>
+        <p class="plan-cat-hero__headline" data-content="hero_headline">ปรึกษาผู้เชี่ยวชาญประกันชีวิต แจ้งเคลม หรือสอบถามกรมธรรม์ — กรอกแบบฟอร์มด้านล่าง ทีมงานจะติดต่อกลับตามเวลาที่คุณสะดวก</p>
       </div>
     </div>
   </section>
 
 <section class="consult-section">
   <div class="container container--inset-default">
-    <div class="consult-card">
+    <div class="consult-card consult-card--compact">
+      <div class="consult-card__head">
+        <p class="consult-card__eyebrow">ลูกค้า</p>
+        <h2 class="consult-card__title" data-content="consult_title">ปรึกษาผู้เชี่ยวชาญประกันชีวิต</h2>
+      </div>
       <form class="consult-form">
-        <div class="consult-form__layout">
+        <div class="consult-form__layout consult-form__layout--compact">
           <div class="consult-form__main">
-            <div class="consult-form__fields">
-              <div class="form-group">
+            <div class="consult-form__fields consult-form__fields--compact">
+              <div class="form-group form-group--insurance">
                 <label for="consult-insurance">ประกันที่สนใจ</label>
                 <select id="consult-insurance" class="form-control" name="insurance">
+                  <option value="" selected>เลือกแบบประกัน</option>
                   <option>สุขภาพระยะยาว 20 ปี</option>
                   <option>ประกันชีวิตและอุบัติเหตุ</option>
                   <option>ประกันสุขภาพ</option>
                   <option>ประกันโรคร้ายแรง</option>
                 </select>
               </div>
-
-              <div class="consult-form__row consult-form__row--half">
-                <div class="form-group">
-                  <label for="consult-firstname">ชื่อ</label>
-                  <input id="consult-firstname" type="text" class="form-control" name="firstname" placeholder="ชื่อ">
-                </div>
-                <div class="form-group">
-                  <label for="consult-lastname">นามสกุล</label>
-                  <input id="consult-lastname" type="text" class="form-control" name="lastname" placeholder="นามสกุล">
-                </div>
+              <div class="form-group form-group--age">
+                <label for="consult-age">อายุ</label>
+                <input id="consult-age" type="text" class="form-control" name="age" placeholder="อายุ">
               </div>
-
-              <div class="form-group">
+              <div class="form-group form-group--province">
                 <label for="consult-province">จังหวัด</label>
                 <select id="consult-province" class="form-control" name="province">
                   <option value="">เลือกจังหวัด</option>
@@ -102,28 +99,23 @@
                   <option>ขอนแก่น</option>
                   <option>ภูเก็ต</option>
                 </select>
-                <p class="form-hint">เลือกจังหวัดที่คุณอาศัยอยู่ เพื่อให้ตัวแทนในพื้นที่ติดต่อกลับ</p>
               </div>
-
-              <div class="consult-form__row consult-form__row--half">
-                <div class="form-group">
-                  <label for="consult-age">อายุ</label>
-                  <input id="consult-age" type="text" class="form-control" name="age" placeholder="อายุ">
-                </div>
-                <div class="form-group">
-                  <label for="consult-email">อีเมล</label>
-                  <input id="consult-email" type="email" class="form-control" name="email" placeholder="กรอกอีเมล">
-                </div>
+              <div class="form-group form-group--fullname">
+                <label for="consult-fullname">ชื่อ - นามสกุล</label>
+                <input id="consult-fullname" type="text" class="form-control" name="fullname" placeholder="ชื่อ - นามสกุล" autocomplete="name">
               </div>
-
-              <div class="form-group">
+              <div class="form-group form-group--phone">
                 <label for="consult-phone">เบอร์โทรศัพท์</label>
-                <input id="consult-phone" type="tel" class="form-control" name="phone" placeholder="099 999 9999">
+                <input id="consult-phone" type="tel" class="form-control" name="phone" placeholder="099 999 9999" autocomplete="tel">
+              </div>
+              <div class="form-group form-group--email">
+                <label for="consult-email">อีเมล</label>
+                <input id="consult-email" type="email" class="form-control" name="email" placeholder="กรอกอีเมล">
               </div>
             </div>
 
             <h2 class="consult-form__section-title">เวลาที่สะดวกในการติดต่อกลับ<span class="consult-form__required">*</span></h2>
-            <div class="consult-time-options">
+            <div class="consult-time-options consult-time-options--compact">
               <label class="consult-time-option">
                 <input type="radio" name="contact_time" value="now" class="consult-time-option__input" checked>
                 <span class="consult-time-option__body">
@@ -168,41 +160,14 @@
 
             <div class="form-group consult-form__message">
               <label for="consult-message">ข้อความเพิ่มเติม</label>
-              <textarea id="consult-message" class="form-control" name="message" rows="4" placeholder="ระบุความต้องการหรือคำถามเพิ่มเติม (ถ้ามี)"></textarea>
+              <textarea id="consult-message" class="form-control" name="message" rows="3" placeholder="ระบุความต้องการหรือคำถามเพิ่มเติม (ถ้ามี)"></textarea>
             </div>
           </div>
-
-          <aside class="consult-form__aside">
-            <div class="consult-aside-panel">
-              <div class="consult-aside-card__media">
-                <img src="assets/img/consult-advisor.jpg" alt="ผู้เชี่ยวชาญให้คำปรึกษาประกันชีวิต" width="484" height="280" loading="lazy">
-              </div>
-              <div class="consult-aside-card">
-                <h3 class="consult-aside-card__title">เลือกปรึกษาผู้เชี่ยวชาญที่เหมาะกับคุณ</h3>
-                <p class="consult-aside-card__text">บริการให้คำปรึกษาด้านประกันชีวิตครบวงจร ช่วยคุณเลือกแผนที่เหมาะกับไลฟ์สไตล์และงบประมาณ พร้อมติดต่อกลับตามเวลาที่คุณสะดวก</p>
-                <ul class="consult-aside-card__list">
-                  <li>
-                    <i data-lucide="circle-check"></i>
-                    <span>ทีมตัวแทนมืออาชีพทั่วประเทศ</span>
-                  </li>
-                  <li>
-                    <i data-lucide="circle-check"></i>
-                    <span>คำแนะนำแผนประกันที่เหมาะกับไลฟ์สไตล์</span>
-                  </li>
-                  <li>
-                    <i data-lucide="circle-check"></i>
-                    <span>ติดต่อกลับตามเวลาที่คุณสะดวก</span>
-                  </li>
-                </ul>
-                <a href="#" class="consult-aside-card__link">รายละเอียดและเงื่อนไข <i data-lucide="external-link"></i></a>
-              </div>
-            </div>
-          </aside>
         </div>
 
         <div class="consult-form__divider"></div>
 
-        <div class="consult-form__actions">
+        <div class="consult-form__actions consult-form__actions--compact">
           <div class="consult-form__actions-left">
             <label class="consult-form__consent">
               <input type="checkbox" name="consent">
@@ -213,7 +178,6 @@
             </label>
           </div>
           <div class="consult-form__buttons">
-            <button type="button" class="btn btn--consult-cancel">ยกเลิก</button>
             <button type="submit" class="btn btn--consult-submit">ส่งข้อมูล</button>
           </div>
         </div>
@@ -267,7 +231,7 @@
               <span class="logo__sub">ตัวแทน FWD ประกันชีวิต</span>
             </div>
           </a>
-          <p class="footer__tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
+          <p class="footer__tagline" data-setting="site_tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
           <ul class="footer__contact-list">
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
@@ -275,7 +239,7 @@
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
-              <a href="mailto:me.agentthailand@gmail.com">me.agentthailand@gmail.com</a>
+              <a href="mailto:me.agentthailand@gmail.com" data-setting="email" data-setting-attr="href" data-setting-prefix="mailto:"><span data-setting="email">me.agentthailand@gmail.com</span></a>
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="phone"></i></span>
@@ -336,7 +300,7 @@
   <div class="footer__bottom">
     <div class="container">
       <div class="footer__bottom-inner">
-        <p class="footer__copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
+        <p class="footer__copyright" data-setting="copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
         <nav class="footer__legal" aria-label="ข้อกำหนดทางกฎหมาย">
           <a href="#">นโยบายความเป็นส่วนตัว</a>
           <a href="#">ข้อกำหนดการใช้งาน</a>
@@ -346,7 +310,9 @@
   </div>
 </footer>
 <script src="https://unpkg.com/lucide@0.477.0"></script>
+<script src="assets/js/site-content.js"></script>
 <script src="assets/js/hero-form-data.js"></script>
+<script src="assets/js/site-chrome.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

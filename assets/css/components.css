@@ -26,7 +26,7 @@
 .header__logo-icon {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, var(--color-accent) 0%, #ff8c42 100%);
+  background: linear-gradient(135deg, var(--color-accent) 0%, #3f34cc 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/site-chrome.css">
   <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
-<body>
+<body data-page="about">
 
 <header class="header">
   <div class="container header__inner">
@@ -46,7 +46,7 @@
 
 <main id="aboutPage">
   <section class="plan-cat-hero">
-    <img src="assets/img/hero/เกี่ยวกับเรา.png" alt="" class="plan-cat-hero__image" width="2243" height="701">
+    <img src="assets/img/hero/เกี่ยวกับเรา.png" alt="" class="plan-cat-hero__image" data-content-src="hero_image" width="2243" height="701">
     <div class="container plan-cat-hero__content">
       <nav class="fwd-plan-breadcrumb plan-cat-hero__breadcrumb" aria-label="breadcrumb">
         <a href="index.html">หน้าแรก</a>
@@ -58,8 +58,8 @@
           <i data-lucide="users" aria-hidden="true"></i>
         </div>
         <p class="plan-cat-hero__eyebrow">Agent Thailand</p>
-        <h1 class="plan-cat-hero__title">เกี่ยวกับเรา</h1>
-        <p class="plan-cat-hero__headline">ตัวแทน FWD ประกันชีวิตที่มุ่งมั่นเปลี่ยนมุมมองของผู้คนที่มีต่อการประกันชีวิต ให้บริการคำปรึกษาที่เข้าใจง่าย โปร่งใส และตอบโจทย์ทุกความต้องการ</p>
+        <h1 class="plan-cat-hero__title" data-content="hero_title">เกี่ยวกับเรา</h1>
+        <p class="plan-cat-hero__headline" data-content="hero_headline">ตัวแทน FWD ประกันชีวิตที่มุ่งมั่นเปลี่ยนมุมมองของผู้คนที่มีต่อการประกันชีวิต ให้บริการคำปรึกษาที่เข้าใจง่าย โปร่งใส และตอบโจทย์ทุกความต้องการ</p>
       </div>
     </div>
   </section>
@@ -69,11 +69,11 @@
       <div class="about-intro__grid">
         <div class="about-intro__copy">
           <span class="about-intro__label">ทำความรู้จัก</span>
-          <h2 id="about-intro-title" class="about-intro__title">ที่ปรึกษาด้านประกันชีวิตที่เข้าใจคุณ</h2>
-          <p class="about-intro__text">Agent Thailand คือเครือข่ายตัวแทนประกันชีวิต FWD ที่มุ่งเน้นการให้คำปรึกษาแบบเข้าใจง่าย โปร่งใส และตรงความต้องการของแต่ละครอบครัว เราช่วยวางแผนความคุ้มครองตั้งแต่ประกันสุขภาพ ประกันชีวิต ไปจนถึงการออมและลงทุน เพื่อให้คุณตัดสินใจได้อย่างมั่นใจในทุกช่วงวัย</p>
-          <p class="about-intro__text">ด้วยทีมตัวแทนมืออาชีพและระบบบริการที่ครบวงจร เราพร้อมดูแลตั้งแต่การเลือกแผน การสมัคร ไปจนถึงการเคลมและดูแลหลังการขาย ทุกขั้นตอนทำได้สะดวกทั้งที่สำนักงานและออนไลน์</p>
+          <h2 id="about-intro-title" class="about-intro__title" data-content="intro_title">ที่ปรึกษาด้านประกันชีวิตที่เข้าใจคุณ</h2>
+          <p class="about-intro__text" data-content="intro_text">Agent Thailand คือเครือข่ายตัวแทนประกันชีวิต FWD ที่มุ่งเน้นการให้คำปรึกษาแบบเข้าใจง่าย โปร่งใส และตรงความต้องการของแต่ละครอบครัว เราช่วยวางแผนความคุ้มครองตั้งแต่ประกันสุขภาพ ประกันชีวิต ไปจนถึงการออมและลงทุน เพื่อให้คุณตัดสินใจได้อย่างมั่นใจในทุกช่วงวัย</p>
+          <p class="about-intro__text" data-content="intro_text2">ด้วยทีมตัวแทนมืออาชีพและระบบบริการที่ครบวงจร เราพร้อมดูแลตั้งแต่การเลือกแผน การสมัคร ไปจนถึงการเคลมและดูแลหลังการขาย ทุกขั้นตอนทำได้สะดวกทั้งที่สำนักงานและออนไลน์</p>
         </div>
-        <div class="about-stats" aria-label="ตัวเลขสำคัญ">
+        <div class="about-stats" aria-label="ตัวเลขสำคัญ" data-block="about_stats">
           <article class="about-stat">
             <span class="about-stat__value">10+</span>
             <span class="about-stat__label">ปีแห่งประสบการณ์</span>
@@ -99,7 +99,7 @@
     </div>
   </section>
 
-  <section class="about-pillars" aria-labelledby="about-pillars-title">
+  <section class="about-pillars" aria-labelledby="about-pillars-title" data-block="about_pillars">
     <div class="container">
       <div class="about-section-head">
         <span class="about-section-head__label">วิสัยทัศน์และพันธกิจ</span>
@@ -125,7 +125,7 @@
     </div>
   </section>
 
-  <section class="about-why" aria-labelledby="about-why-title">
+  <section class="about-why" aria-labelledby="about-why-title" data-block="about_why">
     <div class="container">
       <div class="about-section-head about-section-head--light">
         <span class="about-section-head__label">ทำไมต้องเลือกเรา</span>
@@ -215,7 +215,7 @@
     </div>
   </section>
 
-  <section class="about-message" aria-labelledby="about-message-title">
+  <section class="about-message" aria-labelledby="about-message-title" data-block="about_quote">
     <div class="container">
       <div class="about-message__card">
         <div class="about-message__quote" aria-hidden="true"><i data-lucide="quote"></i></div>
@@ -230,7 +230,7 @@
     </div>
   </section>
 
-  <section class="about-ethics" aria-labelledby="about-ethics-title">
+  <section class="about-ethics" aria-labelledby="about-ethics-title" data-block="about_ethics">
     <div class="container">
       <div class="about-ethics__grid">
         <div class="about-ethics__copy">
@@ -272,7 +272,7 @@
     </div>
   </section>
 
-  <section class="about-milestones" aria-labelledby="about-milestones-title">
+  <section class="about-milestones" aria-labelledby="about-milestones-title" data-block="about_milestones">
     <div class="container">
       <div class="about-section-head about-section-head--light">
         <span class="about-section-head__label">เส้นทางของเรา</span>
@@ -340,7 +340,7 @@
               <span class="logo__sub">ตัวแทน FWD ประกันชีวิต</span>
             </div>
           </a>
-          <p class="footer__tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
+          <p class="footer__tagline" data-setting="site_tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
           <ul class="footer__contact-list">
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
@@ -348,7 +348,7 @@
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
-              <a href="mailto:me.agentthailand@gmail.com">me.agentthailand@gmail.com</a>
+              <a href="mailto:me.agentthailand@gmail.com" data-setting="email" data-setting-attr="href" data-setting-prefix="mailto:"><span data-setting="email">me.agentthailand@gmail.com</span></a>
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="phone"></i></span>
@@ -409,7 +409,7 @@
   <div class="footer__bottom">
     <div class="container">
       <div class="footer__bottom-inner">
-        <p class="footer__copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
+        <p class="footer__copyright" data-setting="copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
         <nav class="footer__legal" aria-label="ข้อกำหนดทางกฎหมาย">
           <a href="#">นโยบายความเป็นส่วนตัว</a>
           <a href="#">ข้อกำหนดการใช้งาน</a>
@@ -419,7 +419,9 @@
   </div>
 </footer>
 <script src="https://unpkg.com/lucide@0.477.0"></script>
+<script src="assets/js/site-content.js"></script>
 <script src="assets/js/hero-form-data.js"></script>
+<script src="assets/js/site-chrome.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

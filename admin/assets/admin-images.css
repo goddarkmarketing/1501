@@ -1,0 +1,47 @@
+/* Image upload fields */
+.admin-image-field__box {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 140px 1fr;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .admin-image-field__box {
+    grid-template-columns: 1fr;
+  }
+}
+
+.admin-image-field__preview {
+  width: 140px;
+  height: 100px;
+  border-radius: 10px;
+  border: 1px solid var(--admin-border);
+  background: #f8fafc;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-image-field__preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admin-image-field__placeholder {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.admin-plan-thumb {
+  width: 48px;
+  height: 36px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--admin-border);
+  background: #f8fafc;
+}

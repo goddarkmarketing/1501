@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
   initLucideIcons();
+  initSiteContent();
   if (typeof initHeroFormSelects === 'function') initHeroFormSelects();
   if (typeof initPlanNavDropdown === 'function') initPlanNavDropdown();
   initMobileMenu();
-  initFaq();
   initTimeSlots();
   initTimeline();
   initTestimonialSlider();
@@ -22,6 +22,100 @@ function initLucideIcons() {
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
+}
+
+function initSiteContent() {
+  if (typeof SITE_PAGES === 'undefined') return;
+
+  const page = document.body.dataset.page;
+  const sections = page ? getSitePage(page) : {};
+
+  document.querySelectorAll('[data-content]').forEach((el) => {
+    const key = el.dataset.content;
+    const val = sections[key];
+    if (val === undefined || val === '') return;
+
+    if (el.dataset.contentHtml !== undefined || /<[a-z][\s\S]*>/i.test(val)) {
+      el.innerHTML = val;
+    } else {
+      el.textContent = val;
+    }
+  });
+
+  document.querySelectorAll('[data-content-href]').forEach((el) => {
+    const key = el.dataset.contentHref;
+    const val = sections[key];
+    if (val) el.setAttribute('href', val);
+  });
+
+  document.querySelectorAll('[data-content-bg]').forEach((el) => {
+    const key = el.dataset.contentBg;
+    const val = sections[key];
+    if (val) el.style.backgroundImage = `url('${val}')`;
+  });
+
+  document.querySelectorAll('[data-content-src]').forEach((el) => {
+    const key = el.dataset.contentSrc;
+    const val = sections[key];
+    if (val) el.setAttribute('src', val);
+  });
+
+  if (typeof SITE_SETTINGS !== 'undefined') {
+    document.querySelectorAll('[data-setting]').forEach((el) => {
+      const key = el.dataset.setting;
+      const val = SITE_SETTINGS[key];
+      if (val === undefined || val === '') return;
+
+      const attr = el.dataset.settingAttr;
+      if (attr === 'href') {
+        const prefix = el.dataset.settingPrefix || '';
+        el.setAttribute('href', prefix + val);
+      } else if (attr === 'src') {
+        el.setAttribute('src', val);
+      } else {
+        el.textContent = val;
+      }
+    });
+  }
+
+  if (typeof SITE_FAQ_ITEMS !== 'undefined' && SITE_FAQ_ITEMS.length) {
+    renderSiteFaq();
+  } else {
+    initFaq();
+  }
+}
+
+function renderSiteFaq() {
+  const grid = document.getElementById('faqGrid');
+  if (!grid) return;
+
+  const half = Math.ceil(SITE_FAQ_ITEMS.length / 2);
+  const cols = [SITE_FAQ_ITEMS.slice(0, half), SITE_FAQ_ITEMS.slice(half)];
+
+  grid.innerHTML = cols.map((items, colIdx) => {
+    const colHtml = items.map((item, idx) => {
+      const active = colIdx === 0 && idx === 0 ? ' active' : '';
+      return `<div class="faq-item${active}">
+        <div class="faq-item__question">
+          <span>${escapeHtml(item.q)}</span>
+          <span class="faq-item__icon"><i data-lucide="${active ? 'x' : 'plus'}"></i></span>
+        </div>
+        <div class="faq-item__answer"><p>${escapeHtml(item.a)}</p></div>
+      </div>`;
+    }).join('');
+    return `<div class="faq-col">${colHtml}</div>`;
+  }).join('');
+
+  initFaq();
+  initLucideIcons();
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 function initMobileMenu() {

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="assets/css/home.css">
   <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
-<body class="page-home">
+<body class="page-home" data-page="home">
 
 <!-- HEADER -->
 <header class="header">
@@ -49,7 +49,7 @@
 
 <!-- HERO -->
 <section class="hero hero--home">
-  <div class="hero__bg" style="background-image:url('assets/img/hero-bg.png')"></div>
+  <div class="hero__bg" data-content-bg="hero_bg_image" style="background-image:url('assets/img/hero-bg.png')"></div>
   <div class="hero__overlay"></div>
 
   <div class="hero__curve" aria-hidden="true"></div>
@@ -63,11 +63,11 @@
 
   <div class="container hero__content">
     <div class="hero__inner">
-    <span class="hero__eyebrow">INNOVATIVE FINANCIAL</span>
-    <h1 class="hero__title">รีบซื้อ ชัวร์กว่า<br>Easy e-Health<br>ลดดอกเบี้ย<br>ปีแรก 12 %</h1>
-    <a href="plan-details.html?id=easy-e-health" class="hero__cta">ซื้อประกันสุขภาพ</a>
+    <span class="hero__eyebrow" data-content="hero_eyebrow">INNOVATIVE FINANCIAL</span>
+    <h1 class="hero__title" data-content="hero_title">รีบซื้อ ชัวร์กว่า<br>Easy e-Health<br>ลดดอกเบี้ย<br>ปีแรก 12 %</h1>
+    <a href="plan-details.html?id=easy-e-health" class="hero__cta" data-content-href="hero_cta_link"><span data-content="hero_cta">ซื้อประกันสุขภาพ</span></a>
 
-    <div class="hero__services">
+    <div class="hero__services" data-block="home_services">
       <div class="hero__services-head">
         <span class="hero__services-label">บริการของเรา</span>
         <span class="hero__services-line"></span>
@@ -179,8 +179,8 @@
   </div>
   <div class="container">
     <div class="intro-section__glass">
-      <h2 class="intro-section__title">ประกันชีวิต</h2>
-      <p class="intro-section__text">ประกันชีวิตคือการวางแผนทางการเงินที่สำคัญที่สุดสำหรับคุณและครอบครัว เรามุ่งมั่นให้บริการคำปรึกษาด้านประกันชีวิตที่ครบวงจร ช่วยคุณเลือกแผนที่เหมาะกับไลฟ์สไตล์และงบประมาณ เพื่อให้คุณมั่นใจในทุกช่วงชีวิต ไม่ว่าจะเป็นการสร้างหลักประกัน การออมทรัพย์ หรือการวางแผนเกษียณ พร้อมทีมตัวแทนมืออาชีพที่พร้อมดูแลและให้คำแนะนำตลอดเส้นทาง</p>
+      <h2 class="intro-section__title" data-content="intro_title">ประกันชีวิต</h2>
+      <p class="intro-section__text" data-content="intro_text">ประกันชีวิตคือการวางแผนทางการเงินที่สำคัญที่สุดสำหรับคุณและครอบครัว เรามุ่งมั่นให้บริการคำปรึกษาด้านประกันชีวิตที่ครบวงจร ช่วยคุณเลือกแผนที่เหมาะกับไลฟ์สไตล์และงบประมาณ เพื่อให้คุณมั่นใจในทุกช่วงชีวิต ไม่ว่าจะเป็นการสร้างหลักประกัน การออมทรัพย์ หรือการวางแผนเกษียณ พร้อมทีมตัวแทนมืออาชีพที่พร้อมดูแลและให้คำแนะนำตลอดเส้นทาง</p>
     </div>
   </div>
 </section>
@@ -224,54 +224,11 @@
   <div class="container container--inset-default">
     <div class="section-head">
       <div>
-        <span class="section-label">ประกัน</span>
-        <h2 class="section-title">แผนประกันแนะนำ</h2>
+        <span class="section-label" data-content="rec_section_label">ประกัน</span>
+        <h2 class="section-title" data-content="rec_section_title">แผนประกันแนะนำ</h2>
       </div>
     </div>
-    <div class="card-grid card-grid--rec">
-      <article class="plan-card">
-        <div class="plan-card__image">
-          <img src="assets/img/plans/plan-rec-1.jpg" alt="ครอบครัวมีความสุขในสวนสาธารณะ" width="313" height="174" loading="lazy">
-          <span class="plan-card__badge plan-card__badge--discount">รับส่วนลด 4 %</span>
-        </div>
-        <div class="plan-card__body">
-          <h3 class="plan-card__title">Easy e-Health ลดดอกเบี้ย ปีแรก 12%</h3>
-          <p class="plan-card__desc">ประกันสุขภาพออนไลน์ สมัครง่าย คุ้มครองครอบคลุมทั้ง IPD และ OPD ไม่ต้องตรวจสุขภาพก่อนรับประกัน จ่ายเบี้ยเริ่มต้นเพียง 665 บาท/เดือน รับส่วนลดพิเศษปีแรก 12% เมื่อสมัครภายในเดือนนี้</p>
-          <a href="plan-details.html?id=easy-e-health" class="btn plan-card__btn">ดูรายละเอียด</a>
-        </div>
-      </article>
-      <article class="plan-card">
-        <div class="plan-card__image">
-          <img src="assets/img/plans/plan-rec-2.jpg" alt="ครอบครัวนั่งพักผ่อนร่วมกันกลางแจ้ง" width="313" height="174" loading="lazy">
-          <span class="plan-card__badge plan-card__badge--discount">รับส่วนลด 4 %</span>
-        </div>
-        <div class="plan-card__body">
-          <h3 class="plan-card__title">FWD Life Protection Plus</h3>
-          <p class="plan-card__desc">คุ้มครองชีวิตและสุขภาพครบวงจร ด้วยเบี้ยประกันที่เหมาะสมกับทุกวัย ครอบคลุมค่ารักษา ค่าห้อง ICU และผลประโยชน์กรณีเสียชีวิต ปรับแผนความคุ้มครองได้ตามช่วงชีวิตของคุณ</p>
-          <a href="plan.html" class="btn plan-card__btn">ดูรายละเอียด</a>
-        </div>
-      </article>
-      <article class="plan-card">
-        <div class="plan-card__image">
-          <img src="assets/img/plans/plan-rec-3.jpg" alt="คู่รักวางแผนการเงินและอนาคตร่วมกัน" width="313" height="174" loading="lazy">
-        </div>
-        <div class="plan-card__body">
-          <h3 class="plan-card__title">Smart Saving Plan</h3>
-          <p class="plan-card__desc">ออมทรัพย์พร้อมความคุ้มครอง สร้างอนาคตที่มั่นคงให้ครอบครัวของคุณ รับเงินคืนตามระยะเวลาที่กำหนด พร้อมโบนัสพิเศษเมื่อครบสัญญา วางแผนเกษียณได้อย่างมั่นใจ</p>
-          <a href="plan.html" class="btn plan-card__btn">ดูรายละเอียด</a>
-        </div>
-      </article>
-      <article class="plan-card">
-        <div class="plan-card__image">
-          <img src="assets/img/plans/plan-rec-4.jpg" alt="แพทย์ให้คำปรึกษาด้านสุขภาพ" width="313" height="174" loading="lazy">
-        </div>
-        <div class="plan-card__body">
-          <h3 class="plan-card__title">Critical Illness Cover</h3>
-          <p class="plan-card__desc">คุ้มครองโรคร้ายแรง 40 โรค จ่ายเงินทันทีเมื่อวินิจฉัย ไม่ต้องส่งใบเสร็จ ใช้เงินก้อนนี้ดูแลครอบครัวได้อย่างอิสระ ลดภาระค่าใช้จ่ายในช่วงเวลาที่สำคัญ</p>
-          <a href="plan.html" class="btn plan-card__btn">ดูรายละเอียด</a>
-        </div>
-      </article>
-    </div>
+    <div class="card-grid card-grid--rec" id="homeFeaturedPlans"></div>
     <a href="plan.html" class="section-view-all">ดูแบบประกันทั้งหมด</a>
   </div>
 </section>
@@ -281,7 +238,7 @@
   <div class="container container--inset-default">
     <div class="consult-card">
       <div class="consult-card__head">
-        <h2 class="consult-card__title">ปรึกษาผู้เชี่ยวชาญประกันชีวิต</h2>
+        <h2 class="consult-card__title" data-content="consult_title">ปรึกษาผู้เชี่ยวชาญประกันชีวิต</h2>
       </div>
       <form class="consult-form">
         <div class="consult-form__layout">
@@ -470,7 +427,7 @@
 </div>
 
 <!-- FEATURE -->
-<section class="section feature-section" aria-labelledby="feature-section-title">
+<section class="section feature-section" aria-labelledby="feature-section-title" data-block="home_features">
   <div class="container container--inset-default">
     <div class="feature-panel">
       <div class="feature-grid">
@@ -528,7 +485,7 @@
       </div>
     </div>
 
-    <div class="about-cta" aria-labelledby="home-cta-title">
+    <div class="about-cta" aria-labelledby="home-cta-title" data-block="home_about_cta">
       <div class="about-cta__card">
         <div class="about-cta__copy">
           <h2 id="home-cta-title" class="about-cta__title">พร้อมวางแผนความคุ้มครองกับเราแล้วหรือยัง?</h2>
@@ -557,7 +514,7 @@
               <span class="logo__sub">ตัวแทน FWD ประกันชีวิต</span>
             </div>
           </a>
-          <p class="footer__tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
+          <p class="footer__tagline" data-setting="site_tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
           <ul class="footer__contact-list">
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
@@ -565,7 +522,7 @@
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
-              <a href="mailto:me.agentthailand@gmail.com">me.agentthailand@gmail.com</a>
+              <a href="mailto:me.agentthailand@gmail.com" data-setting="email" data-setting-attr="href" data-setting-prefix="mailto:"><span data-setting="email">me.agentthailand@gmail.com</span></a>
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="phone"></i></span>
@@ -626,7 +583,7 @@
   <div class="footer__bottom">
     <div class="container">
       <div class="footer__bottom-inner">
-        <p class="footer__copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
+        <p class="footer__copyright" data-setting="copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
         <nav class="footer__legal" aria-label="ข้อกำหนดทางกฎหมาย">
           <a href="#">นโยบายความเป็นส่วนตัว</a>
           <a href="#">ข้อกำหนดการใช้งาน</a>
@@ -637,7 +594,10 @@
 </footer>
 
 <script src="https://unpkg.com/lucide@0.477.0"></script>
+<script src="assets/js/site-content.js"></script>
+<script src="assets/js/plan-data.js"></script>
 <script src="assets/js/hero-form-data.js"></script>
+<script src="assets/js/site-chrome.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

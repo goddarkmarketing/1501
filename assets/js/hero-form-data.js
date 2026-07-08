@@ -243,10 +243,22 @@ function initPlanNavDropdown() {
   initNavDropdowns();
 }
 
+function getNavMegaMenus() {
+  if (typeof SITE_NAV_MENUS !== 'undefined') {
+    const hasProducts = Array.isArray(SITE_NAV_MENUS.products) && SITE_NAV_MENUS.products.length > 0;
+    const hasServices = Array.isArray(SITE_NAV_MENUS.services) && SITE_NAV_MENUS.services.length > 0;
+    if (hasProducts || hasServices) {
+      return SITE_NAV_MENUS;
+    }
+  }
+  return NAV_MEGA_MENUS;
+}
+
 function initNavDropdowns() {
+  const menus = getNavMegaMenus();
   document.querySelectorAll('.header__nav-item--dropdown').forEach((item) => {
     const menuKey = item.dataset.navMenu || 'products';
-    const menuData = NAV_MEGA_MENUS[menuKey];
+    const menuData = menus[menuKey];
     const submenu = item.querySelector('.header__nav-submenu');
     const trigger = item.querySelector('.header__nav-link--dropdown');
     if (!menuData || !submenu || !trigger) return;

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/site-chrome.css">
   <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
-<body>
+<body data-page="blog">
 
 <header class="header">
   <div class="container header__inner">
@@ -46,7 +46,7 @@
 
 <main id="blogPage">
   <section class="plan-cat-hero">
-    <img src="assets/img/hero/บทความ.png" alt="" class="plan-cat-hero__image" width="2243" height="701">
+    <img src="assets/img/hero/บทความ.png" alt="" class="plan-cat-hero__image" data-content-src="hero_image" width="2243" height="701">
     <div class="container plan-cat-hero__content">
       <nav class="fwd-plan-breadcrumb plan-cat-hero__breadcrumb" aria-label="breadcrumb">
         <a href="index.html">หน้าแรก</a>
@@ -58,8 +58,8 @@
           <i data-lucide="book-open" aria-hidden="true"></i>
         </div>
         <p class="plan-cat-hero__eyebrow">ความรู้ประกันชีวิต</p>
-        <h1 class="plan-cat-hero__title">บทความและความรู้</h1>
-        <p class="plan-cat-hero__headline">รวมบทความเกี่ยวกับประกันชีวิต สุขภาพ การวางแผนการเงิน การเคลม และเคล็ดลับที่ช่วยให้คุณตัดสินใจเลือกแผนประกันที่เหมาะกับชีวิตได้อย่างมั่นใจ</p>
+        <h1 class="plan-cat-hero__title" data-content="hero_title">บทความและความรู้</h1>
+        <p class="plan-cat-hero__headline" data-content="hero_headline">รวมบทความเกี่ยวกับประกันชีวิต สุขภาพ การวางแผนการเงิน การเคลม และเคล็ดลับที่ช่วยให้คุณตัดสินใจเลือกแผนประกันที่เหมาะกับชีวิตได้อย่างมั่นใจ</p>
       </div>
     </div>
   </section>
@@ -125,7 +125,7 @@
               <span class="logo__sub">ตัวแทน FWD ประกันชีวิต</span>
             </div>
           </a>
-          <p class="footer__tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
+          <p class="footer__tagline" data-setting="site_tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
           <ul class="footer__contact-list">
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
@@ -133,7 +133,7 @@
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
-              <a href="mailto:me.agentthailand@gmail.com">me.agentthailand@gmail.com</a>
+              <a href="mailto:me.agentthailand@gmail.com" data-setting="email" data-setting-attr="href" data-setting-prefix="mailto:"><span data-setting="email">me.agentthailand@gmail.com</span></a>
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="phone"></i></span>
@@ -194,7 +194,7 @@
   <div class="footer__bottom">
     <div class="container">
       <div class="footer__bottom-inner">
-        <p class="footer__copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
+        <p class="footer__copyright" data-setting="copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
         <nav class="footer__legal" aria-label="ข้อกำหนดทางกฎหมาย">
           <a href="#">นโยบายความเป็นส่วนตัว</a>
           <a href="#">ข้อกำหนดการใช้งาน</a>
@@ -204,7 +204,9 @@
   </div>
 </footer>
 <script src="https://unpkg.com/lucide@0.477.0"></script>
+<script src="assets/js/site-content.js"></script>
 <script src="assets/js/hero-form-data.js"></script>
+<script src="assets/js/site-chrome.js"></script>
 <script src="assets/js/blog-data.js"></script>
 <script src="assets/js/main.js"></script>
 </body>

@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/site-chrome.css">
   <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
-<body>
+<body data-page="faq">
 
 <header class="header">
   <div class="container header__inner">
@@ -58,88 +58,23 @@
           <i data-lucide="circle-help" aria-hidden="true"></i>
         </div>
         <p class="plan-cat-hero__eyebrow">บริการลูกค้า</p>
-        <h1 class="plan-cat-hero__title">คำถามที่พบบ่อย (FAQ)</h1>
-        <p class="plan-cat-hero__headline">คำถามที่พบบ่อยเกี่ยวกับประกันชีวิต ประกันสุขภาพ การสมัคร การเคลม และบริการของ Agent Thailand ตัวแทน FWD</p>
+        <h1 class="plan-cat-hero__title" data-content="hero_title">คำถามที่พบบ่อย (FAQ)</h1>
+        <p class="plan-cat-hero__headline" data-content="hero_headline">คำถามที่พบบ่อยเกี่ยวกับประกันชีวิต ประกันสุขภาพ การสมัคร การเคลม และบริการของ Agent Thailand ตัวแทน FWD</p>
       </div>
     </div>
   </section>
 
 <section class="section faq-section" id="faq">
   <div class="container container--faq">
-    <div class="faq-grid">
+    <div class="faq-grid" id="faqGrid">
       <div class="faq-col">
         <div class="faq-item active">
           <div class="faq-item__question">
             <span>ประกันชีวิตคืออะไร และทำไมถึงสำคัญ?</span>
-            <span class="faq-item__icon"><i data-lucide="plus"></i></span>
+            <span class="faq-item__icon"><i data-lucide="x"></i></span>
           </div>
           <div class="faq-item__answer">
-            <p>ประกันชีวิตเป็นเครื่องมือทางการเงินที่ช่วยคุ้มครองครอบครัวของคุณในกรณีที่เกิดเหตุไม่คาดฝัน เป็นการวางแผนทางการเงินที่สำคัญเพื่อให้คนที่คุณรักมีความมั่นคงในอนาคต</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <span>ต้องใช้เอกสารอะไรบ้างในการสมัครประกัน?</span>
-            <span class="faq-item__icon"><i data-lucide="plus"></i></span>
-          </div>
-          <div class="faq-item__answer">
-            <p>เอกสารที่ต้องใช้ ได้แก่ บัตรประชาชน สำเนาทะเบียนบ้าน และเอกสารทางการแพทย์ (ถ้ามี)</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <span>สามารถเปลี่ยนแผนประกันได้หรือไม่?</span>
-            <span class="faq-item__icon"><i data-lucide="plus"></i></span>
-          </div>
-          <div class="faq-item__answer">
-            <p>สามารถเปลี่ยนแผนประกันได้ตามเงื่อนไขของกรมธรรม์ โดยติดต่อตัวแทนหรือฝ่ายบริการลูกค้า</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <span>เคลมประกันใช้เวลานานเท่าไหร่?</span>
-            <span class="faq-item__icon"><i data-lucide="plus"></i></span>
-          </div>
-          <div class="faq-item__answer">
-            <p>ระยะเวลาในการพิจารณาเคลมโดยทั่วไปใช้เวลา 7-15 วันทำการ</p>
-          </div>
-        </div>
-      </div>
-      <div class="faq-col">
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <span>มีบริการปรึกษาฟรีหรือไม่?</span>
-            <span class="faq-item__icon"><i data-lucide="plus"></i></span>
-          </div>
-          <div class="faq-item__answer">
-            <p>มีบริการปรึกษาฟรีจากทีมผู้เชี่ยวชาญของเรา ติดต่อได้ผ่านแบบฟอร์ม โทรศัพท์ หรือ Line Official</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <span>สามารถจ่ายเบี้ยประกันรายเดือนได้หรือไม่?</span>
-            <span class="faq-item__icon"><i data-lucide="plus"></i></span>
-          </div>
-          <div class="faq-item__answer">
-            <p>สามารถเลือกชำระเบี้ยได้หลายรูปแบบ ทั้งรายเดือน ราย 3 เดือน ราย 6 เดือน หรือรายปี ตามแผนที่คุณสมัคร</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <span>ประกันคุ้มครองตั้งแต่เมื่อไหร่?</span>
-            <span class="faq-item__icon"><i data-lucide="plus"></i></span>
-          </div>
-          <div class="faq-item__answer">
-            <p>ความคุ้มครองเริ่มต้นตามเงื่อนไขในกรมธรรม์ โดยทั่วไปมีผลหลังอนุมัติและชำระเบี้ยงวดแรกเรียบร้อยแล้ว</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-item__question">
-            <span>ยกเลิกกรมธรรม์ได้หรือไม่?</span>
-            <span class="faq-item__icon"><i data-lucide="plus"></i></span>
-          </div>
-          <div class="faq-item__answer">
-            <p>สามารถยกเลิกกรมธรรม์ได้ตามเงื่อนไขที่ระบุในกรมธรรม์ โดยแนะนำให้ปรึกษาตัวแทนก่อนตัดสินใจ</p>
+            <p>ประกันชีวิตเป็นเครื่องมือทางการเงินที่ช่วยคุ้มครองครอบครัวของคุณในกรณีที่เกิดเหตุไม่คาดฝัน</p>
           </div>
         </div>
       </div>
@@ -160,7 +95,7 @@
               <span class="logo__sub">ตัวแทน FWD ประกันชีวิต</span>
             </div>
           </a>
-          <p class="footer__tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
+          <p class="footer__tagline" data-setting="site_tagline">ที่ปรึกษาด้านประกันชีวิตและสุขภาพ ช่วยวางแผนคุ้มครองที่เหมาะกับทุกช่วงวัย ด้วยผลิตภัณฑ์ FWD ที่ได้รับความไว้วางใจจากครอบครัวไทย</p>
           <ul class="footer__contact-list">
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="map-pin"></i></span>
@@ -168,7 +103,7 @@
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="mail"></i></span>
-              <a href="mailto:me.agentthailand@gmail.com">me.agentthailand@gmail.com</a>
+              <a href="mailto:me.agentthailand@gmail.com" data-setting="email" data-setting-attr="href" data-setting-prefix="mailto:"><span data-setting="email">me.agentthailand@gmail.com</span></a>
             </li>
             <li class="footer__contact-item">
               <span class="footer__contact-icon" aria-hidden="true"><i data-lucide="phone"></i></span>
@@ -229,7 +164,7 @@
   <div class="footer__bottom">
     <div class="container">
       <div class="footer__bottom-inner">
-        <p class="footer__copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
+        <p class="footer__copyright" data-setting="copyright">© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์</p>
         <nav class="footer__legal" aria-label="ข้อกำหนดทางกฎหมาย">
           <a href="#">นโยบายความเป็นส่วนตัว</a>
           <a href="#">ข้อกำหนดการใช้งาน</a>
@@ -239,7 +174,9 @@
   </div>
 </footer>
 <script src="https://unpkg.com/lucide@0.477.0"></script>
+<script src="assets/js/site-content.js"></script>
 <script src="assets/js/hero-form-data.js"></script>
+<script src="assets/js/site-chrome.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

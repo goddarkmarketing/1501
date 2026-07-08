@@ -173,7 +173,7 @@
   }
 
   .header__nav-item--dropdown.is-open .header__nav-link--dropdown {
-    color: var(--color-primary, #e87722);
+    color: var(--color-primary, #150f96);
     font-weight: 700;
   }
 
@@ -191,9 +191,9 @@
   .header__nav-submenu--mega {
     margin-top: 4px;
     padding: 0;
-    background: #faf6f2;
+    background: #f5f4fa;
     border-radius: 10px;
-    border: 1px solid rgba(232, 119, 34, 0.1);
+    border: 1px solid rgba(21, 15, 150, 0.1);
   }
 
   .header__nav-item--dropdown.is-open .header__nav-submenu--mega {
@@ -215,7 +215,7 @@
   }
 
   .header__nav-mega-group + .header__nav-mega-group {
-    border-top: 1px solid rgba(232, 119, 34, 0.08);
+    border-top: 1px solid rgba(21, 15, 150, 0.08);
     margin-top: 4px;
     padding-top: 16px;
   }
@@ -229,7 +229,7 @@
   .header__nav-mega-title {
     font-size: 13px;
     font-weight: 700;
-    color: var(--color-primary-dark, #c96510);
+    color: var(--color-primary-dark, #0e0a6e);
     text-transform: uppercase;
     letter-spacing: 0.02em;
   }
@@ -261,15 +261,15 @@
 
   .header__nav-mega-link:active,
   .header__nav-mega-link:hover {
-    background: rgba(232, 119, 34, 0.1);
-    color: var(--color-primary, #e87722);
+    background: rgba(21, 15, 150, 0.1);
+    color: var(--color-primary, #150f96);
   }
 
   .header__nav-mega-divider {
     width: auto;
     height: 1px;
     margin: 0 14px;
-    background: rgba(232, 119, 34, 0.12);
+    background: rgba(21, 15, 150, 0.12);
   }
 
   .header__nav-submenu-link {
@@ -284,8 +284,8 @@
 
   .header__nav-submenu-link:active,
   .header__nav-submenu-link:hover {
-    background: rgba(232, 119, 34, 0.1);
-    color: var(--color-primary, #e87722);
+    background: rgba(21, 15, 150, 0.1);
+    color: var(--color-primary, #150f96);
   }
 
   .header__nav-link {
@@ -474,14 +474,12 @@
     aspect-ratio: 16 / 10;
   }
 
-  /* ===== Hero — text top, image bottom ===== */
+  /* ===== Hero — content only on mobile (hide background image) ===== */
   body:not(.page-home) .plan-cat-hero {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    display: block;
     min-height: 0;
     aspect-ratio: auto;
-    overflow: hidden;
+    overflow: visible;
   }
 
   body:not(.page-home) :is(#blogPage, #hospitalPage, #faqPage, #contactPage, #planCategory, #promotionPage, #aboutPage) .plan-cat-hero {
@@ -489,31 +487,18 @@
     aspect-ratio: auto;
   }
 
-  body:not(.page-home) .plan-cat-hero__image {
-    position: relative;
-    order: 2;
-    inset: auto;
-    width: 100%;
-    height: auto;
-    max-height: none;
-    aspect-ratio: 16 / 9;
-    transform: none;
-    object-fit: cover;
-    object-position: center center;
+  body:not(.page-home) .plan-cat-hero__image,
+  body:not(.page-home) .plan-cat-hero__image-wrap,
+  body:not(.page-home) .plan-cat-hero > .plan-cat-hero__image {
+    display: none;
   }
 
   body:not(.page-home) .plan-cat-hero__content {
-    order: 1;
     position: relative;
     z-index: 1;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 24px;
     background: #fff;
-  }
-
-  body:not(.page-home) .plan-cat-hero__image-wrap,
-  body:not(.page-home) .plan-cat-hero > .plan-cat-hero__image {
-    order: 2;
   }
 
   body:not(.page-home) .plan-cat-hero__headline,
@@ -541,7 +526,183 @@
     padding: 24px 0;
   }
 
-  /* ===== Consult / register forms — 1 column ===== */
+  /* ===== Consult / register forms — 1 column, wider on inner pages ===== */
+  .u-desktop-only {
+    display: none !important;
+  }
+
+  .u-mobile-only {
+    display: block !important;
+  }
+
+  /* Contact page — mobile layout (full fields, comfortable spacing) */
+  #contactPage .consult-section {
+    padding-top: 20px;
+    padding-bottom: 32px;
+  }
+
+  #contactPage .consult-section .container--inset-default {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  #contactPage .consult-card--compact {
+    padding: 22px 18px 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.14);
+  }
+
+  #contactPage .consult-card--compact .consult-card__head {
+    margin-bottom: 14px;
+    text-align: left;
+  }
+
+  #contactPage .consult-card--compact .consult-card__title {
+    font-size: clamp(20px, 5.5vw, 24px);
+    line-height: 1.3;
+  }
+
+  #contactPage .consult-form__fields--compact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #contactPage .consult-form__fields--compact .form-group label,
+  #contactPage .consult-form__message label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  #contactPage .consult-form__fields--compact .form-group {
+    position: relative;
+  }
+
+  #contactPage .consult-form__message {
+    position: relative;
+  }
+
+  #contactPage .consult-card--compact .form-control {
+    height: 44px;
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 16px;
+  }
+
+  #contactPage .consult-card--compact select.form-control {
+    font-size: 14px;
+    line-height: 1.35;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 36px;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px 8px;
+  }
+
+  #contactPage .consult-card--compact select.form-control option {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #28241f;
+    background: #fff;
+  }
+
+  #contactPage .consult-form__section-title {
+    margin: 16px 0 12px;
+    font-size: 15px;
+  }
+
+  #contactPage .consult-time-options--compact {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  #contactPage .consult-time-options--compact .consult-time-option__body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: 0;
+    padding: 12px 14px;
+    text-align: left;
+  }
+
+  #contactPage .consult-time-options--compact .consult-time-option__radio,
+  #contactPage .consult-time-options--compact .consult-time-option__desc {
+    display: block;
+  }
+
+  #contactPage .consult-time-options--compact .consult-time-option__title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  #contactPage .consult-time-options--compact .consult-time-option__desc {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  #contactPage .consult-form__message {
+    margin-top: 14px;
+  }
+
+  #contactPage .consult-card--compact textarea.form-control {
+    min-height: 72px;
+    height: auto;
+  }
+
+  #contactPage .consult-form__divider {
+    display: block;
+    margin: 16px 0 14px;
+  }
+
+  #contactPage .consult-form__actions--compact {
+    gap: 12px;
+    margin-top: 0;
+  }
+
+  #contactPage .consult-form__actions--compact .consult-form__consent-text {
+    font-size: 13px;
+    line-height: 1.45;
+    gap: 8px;
+  }
+
+  #contactPage .consult-form__actions--compact .btn--consult-submit {
+    height: 48px;
+    font-size: 16px;
+  }
+
+  body:not(.page-home) .consult-section {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
+  body:not(.page-home) .consult-section .container--inset-default {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  body:not(.page-home) .consult-section .consult-card {
+    padding: 22px 18px;
+    border-radius: 14px;
+  }
+
+  body:not(.page-home) .consult-section .consult-card__title {
+    font-size: clamp(22px, 6vw, 30px);
+    line-height: 1.25;
+  }
+
   .consult-section .consult-form__layout,
   .consult-section .consult-form__row--split,
   .consult-section .consult-form__row--half,
@@ -552,7 +713,7 @@
     grid-template-columns: 1fr;
   }
 
-  .consult-section .consult-card,
+  .page-home .consult-section .consult-card,
   body:not(.page-home) .register-form-card {
     padding: 24px 16px;
   }

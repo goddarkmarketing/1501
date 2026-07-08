@@ -72,7 +72,7 @@ function renderHospitalCard(hospital) {  const address = formatHospitalAddress(h
 function createCheckInIcon(isActive) {
   const width = isActive ? 32 : 28;
   const height = isActive ? 40 : 36;
-  const fill = isActive ? '#e87722' : '#f58020';
+  const fill = isActive ? '#150f96' : '#2a1fbb';
 
   return L.divIcon({
     className: 'hospital-map-marker-wrap leaflet-div-icon',
