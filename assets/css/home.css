@@ -564,6 +564,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  max-height: min(420px, calc(100vh - 160px));
+  overflow-y: auto;
 }
 
 .page-home .hero-fab-channel {
@@ -620,6 +622,19 @@
 
 .page-home .hero-fab-channel--phone .hero-fab-channel__icon {
   background: #25d366;
+}
+
+.page-home .hero-fab-channel--buy .hero-fab-channel__icon {
+  background: #150f96;
+}
+
+.page-home .hero-fab-channel--agent .hero-fab-channel__icon {
+  background: #e87722;
+}
+
+.page-home .hero-fab-channel__icon [data-lucide] {
+  width: 22px;
+  height: 22px;
 }
 
 .page-home .hero-fab-channel__body {
@@ -1441,17 +1456,24 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 112px;
-  height: 25px;
+  max-width: calc(100% - 20px);
+  width: max-content;
+  min-width: 0;
+  height: auto;
+  min-height: 25px;
   font-size: 12px;
   font-weight: 600;
-  line-height: 16px;
-  padding: 8px 19px;
+  line-height: 1.2;
+  padding: 6px 12px;
   border-radius: 10px;
   top: 10px;
   left: 10px;
+  right: auto;
   background: #2a1fbb;
   color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .page-home .plan-card__badge--discount {
@@ -2241,6 +2263,10 @@
   letter-spacing: -0.02em;
   color: #1a1a1a;
   margin: 0 0 14px;
+}
+
+.page-home .feature-grid__highlight {
+  color: var(--figma-green, #150f96);
 }
 
 .page-home .feature-grid__lead {

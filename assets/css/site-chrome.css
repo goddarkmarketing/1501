@@ -1595,16 +1595,51 @@ body:not(.page-home) .hero__cta:hover {
   color: #2a1fbb;
 }
 
-.footer__social-link [data-lucide] {
+.footer__social-link [data-lucide],
+.footer__social-link svg {
   width: 18px;
   height: 18px;
+  display: block;
 }
 
-.footer__social .social-fb:hover { background: #1877f2; border-color: #1877f2; }
-.footer__social .social-line:hover { background: #00b900; border-color: #00b900; }
-.footer__social .social-yt:hover { background: #ff0000; border-color: #ff0000; }
-.footer__social .social-ig:hover { background: #e4405f; border-color: #e4405f; }
-.footer__social .social-tt:hover { background: #000; border-color: #000; }
+.footer__social .social-fb {
+  background: #1877f2;
+  border-color: #1877f2;
+  color: #fff;
+}
+
+.footer__social .social-line {
+  background: #06c755;
+  border-color: #06c755;
+  color: #fff;
+}
+
+.footer__social .social-yt {
+  background: #ff0000;
+  border-color: #ff0000;
+  color: #fff;
+}
+
+.footer__social .social-ig {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.footer__social .social-tt {
+  background: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.footer__social .social-fb:hover,
+.footer__social .social-line:hover,
+.footer__social .social-yt:hover,
+.footer__social .social-ig:hover,
+.footer__social .social-tt:hover {
+  color: #fff;
+  filter: brightness(1.08);
+}
 
 .footer__col {
   min-width: 0;

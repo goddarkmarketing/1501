@@ -210,6 +210,8 @@ function getDefaultCmsBlocks(): array {
         'hero_fab' => [
             'title' => 'ติดต่อเรา',
             'items' => [
+                ['channel' => 'buy', 'label' => 'ซื้อประกัน', 'value' => 'กรอกแบบฟอร์มปรึกษา', 'href' => 'contact.html'],
+                ['channel' => 'agent', 'label' => 'สมัครตัวแทน', 'value' => 'สมัครเป็นตัวแทน FWD', 'href' => 'register.html'],
                 ['channel' => 'facebook', 'label' => 'Facebook', 'value' => 'Agent Thailand', 'href' => 'https://www.facebook.com/AgentThailandFWD'],
                 ['channel' => 'line', 'label' => 'LINE', 'value' => '@agentthailand', 'href' => 'https://line.me/ti/p/~@agentthailand'],
                 ['channel' => 'tiktok', 'label' => 'TikTok', 'value' => '@agentthailand', 'href' => 'https://www.tiktok.com/@agentthailand'],
@@ -235,7 +237,7 @@ function getDefaultCmsBlocks(): array {
             'eyebrow' => 'ทำไมต้อง Agent Thailand',
             'title' => 'ให้การประกันเป็นเรื่องง่ายด้วย',
             'highlight' => 'ที่ปรึกษามืออาชีพ',
-            'image' => 'assets/img/feature-advisor.jpg',
+            'image' => 'assets/img/feature-advisor.png',
             'items' => [
                 ['icon' => 'users', 'title' => 'ทีมตัวแทนมืออาชีพ', 'text' => 'ผู้เชี่ยวชาญพร้อมให้คำปรึกษาแบบเข้าใจง่าย'],
                 ['icon' => 'shield-check', 'title' => 'ผลิตภัณฑ์ FWD', 'text' => 'แผนประกันครบทุกความต้องการ'],
