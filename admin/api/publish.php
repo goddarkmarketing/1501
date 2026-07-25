@@ -405,7 +405,7 @@ try {
     $_SESSION['flash_error'] = 'เผยแพร่ไม่สำเร็จ: ' . $e->getMessage();
 }
 
-if (!$isCli) {
+if (!$isCli && !defined('CMS_INTERNAL_PUBLISH')) {
     header('Location: ' . ADMIN_URL . '/');
     exit;
 }

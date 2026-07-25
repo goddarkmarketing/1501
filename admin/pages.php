@@ -10,7 +10,7 @@ $totalSections = array_sum(array_map(fn($p) => count($p['sections']), $pages));
 
 <div class="admin-page-toolbar">
   <div>
-    <p class="admin-page-toolbar__lead">แก้ไขเนื้อหา Hero และข้อความหลักของแต่ละหน้า — กดเผยแพร่หลังบันทึกเพื่อให้แสดงบนหน้าบ้าน</p>
+    <p class="admin-page-toolbar__lead">แก้ไขเนื้อหาแบบเห็นจริง — พรีวิวเหมือนหน้าบ้าน คลิกข้อความเพื่อแก้ไข แล้วกดเผยแพร่หลังบันทึก</p>
     <div class="admin-page-toolbar__meta">
       <span class="admin-stat-pill"><?= count($pages) ?> หน้า</span>
       <span class="admin-stat-pill"><?= $totalSections ?> ส่วนที่แก้ไขได้</span>
@@ -62,7 +62,7 @@ $totalSections = array_sum(array_map(fn($p) => count($p['sections']), $pages));
 
     <div class="admin-page-tile__actions">
       <a href="<?= ADMIN_URL ?>/page-edit.php?page=<?= urlencode($slug) ?>" class="admin-btn-primary admin-btn-primary--sm">
-        แก้ไขเนื้อหา
+        แก้ไขแบบเห็นจริง
       </a>
       <a href="<?= htmlspecialchars($page['url']) ?>" target="_blank" rel="noopener" class="admin-btn-ghost admin-btn-ghost--sm">
         ดูหน้าจริง ↗

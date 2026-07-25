@@ -495,3 +495,215 @@ body.admin-app {
   background: #f8fafc;
   color: #0f172a;
 }
+
+.admin-sidebar-icon {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  max-width: 1.25rem;
+  max-height: 1.25rem;
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0.9;
+  stroke-width: 1.75;
+}
+
+.admin-sidebar-link .admin-sidebar-icon,
+.admin-sidebar-link svg.admin-sidebar-icon {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+}
+
+.admin-page-icon,
+.admin-page-tile__icon svg,
+.admin-related__icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 1.75;
+}
+
+/* Visual page editor */
+.admin-visual-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-visual-layout {
+  display: grid;
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (min-width: 1100px) {
+  .admin-visual-layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+  }
+}
+
+.admin-visual-preview-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.admin-visual-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+  flex-wrap: wrap;
+}
+
+.admin-visual-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #150f96;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.admin-visual-zoom {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.admin-visual-zoom-btn,
+.admin-visual-zoom-fit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.45rem;
+  background: #fff;
+  color: #334155;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-visual-zoom-btn:hover,
+.admin-visual-zoom-fit:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.admin-visual-zoom-select {
+  height: 2rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.45rem;
+  background: #fff;
+  color: #0f172a;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0 0.4rem;
+  min-width: 4.5rem;
+}
+
+.admin-visual-zoom-fit {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.admin-visual-viewport {
+  min-height: 480px;
+  height: auto;
+  overflow: visible;
+  background: #e2e8f0;
+  position: relative;
+}
+
+.admin-visual-sizer {
+  position: relative;
+}
+
+.admin-visual-scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: top left;
+  background: #fff;
+  will-change: transform;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.08);
+}
+
+.admin-visual-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+  display: block;
+  overflow: hidden;
+}
+
+.admin-visual-panel {
+  min-width: 0;
+}
+
+@media (min-width: 1100px) {
+  .admin-visual-panel {
+    position: sticky;
+    top: 4.75rem;
+    align-self: start;
+    max-height: calc(100vh - 5.25rem);
+    overflow-y: auto;
+    padding-bottom: 0.5rem;
+    /* hide scrollbar track but keep scroll if panel content is tall */
+    scrollbar-gutter: stable;
+  }
+}
+
+.admin-visual-field {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.65rem;
+  padding: 0.65rem;
+  background: #fff;
+}
+
+.admin-visual-field.is-active {
+  border-color: #150f96;
+  box-shadow: 0 0 0 1px rgba(21, 15, 150, 0.15);
+}
+
+.admin-visual-field-btn {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+}
+
+.admin-visual-field-btn:disabled {
+  cursor: default;
+}
+
+.admin-visual-field-preview {
+  max-width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}

@@ -8,7 +8,41 @@ document.addEventListener('DOMContentLoaded', () => {
   initSiteBlocks();
   initHomeFeaturedPlans();
   initConsultForms();
+  applyVisualOverrides();
+  initCmsPreviewBridge();
 });
+
+function applyVisualOverrides() {
+  if (typeof SITE_BLOCKS === 'undefined' || !SITE_BLOCKS.visual_overrides) return;
+  const page = document.body.dataset.page || 'home';
+  const map = SITE_BLOCKS.visual_overrides[page];
+  if (!map || typeof map !== 'object') return;
+  Object.entries(map).forEach(([selector, data]) => {
+    if (!data || typeof data !== 'object') return;
+    let el;
+    try {
+      el = document.querySelector(selector);
+    } catch {
+      return;
+    }
+    if (!el) return;
+    // Do not override excluded zones
+    if (el.closest('form, .consult-form, .plan-card, .blog-card, #homeFeaturedPlans')) return;
+    if (data.href != null && el.tagName === 'A') el.setAttribute('href', data.href);
+    if (data.html != null) el.innerHTML = data.html;
+    else if (data.text != null) el.textContent = data.text;
+  });
+}
+
+function initCmsPreviewBridge() {
+  if (new URLSearchParams(location.search).get('cms_preview') !== '1') return;
+  if (window.parent === window) return;
+  if (document.querySelector('script[data-cms-preview-bridge]')) return;
+  const s = document.createElement('script');
+  s.src = 'assets/js/cms-preview-bridge.js';
+  s.dataset.cmsPreviewBridge = '1';
+  document.body.appendChild(s);
+}
 
 function esc(str) {
   return String(str ?? '')
@@ -255,8 +289,8 @@ function renderHomeServices(el, data) {
   if (!data.items) return;
   const label = el.querySelector('.hero__services-label');
   if (label && data.label) label.textContent = data.label;
-  grid.innerHTML = data.items.map((item) => `
-    <a href="${esc(item.href || '#')}" class="hero__service-card">
+  grid.innerHTML = data.items.map((item, index) => `
+    <a href="${esc(item.href || '#')}" class="hero__service-card" data-cms-item-index="${index}">
       <span class="hero__service-icon"><i data-lucide="${esc(item.icon || 'circle')}"></i></span>
       <span class="hero__service-text">${esc(item.text)}</span>
     </a>`).join('');

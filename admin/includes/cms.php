@@ -56,6 +56,12 @@ function getCmsBlockDefinitions(): array {
             'type' => 'cta_band',
             'description' => 'แถบพร้อมวางแผนด้านล่าง',
         ],
+        'visual_overrides' => [
+            'label' => 'ข้อความแก้จาก Visual Editor',
+            'group' => 'ระบบ',
+            'type' => 'json',
+            'description' => 'override ข้อความตาม selector ต่อหน้า',
+        ],
         'consult_aside' => [
             'label' => 'ข้อความข้างฟอร์มปรึกษา',
             'group' => 'ฟอร์ม',
@@ -252,6 +258,7 @@ function getDefaultCmsBlocks(): array {
             'primary' => ['label' => 'นัดปรึกษา', 'href' => 'contact.html'],
             'secondary' => ['label' => 'ดูแผนประกัน', 'href' => 'plan.html'],
         ],
+        'visual_overrides' => [],
         'consult_aside' => [
             'image' => 'assets/img/consult-advisor.jpg',
             'title' => 'เลือกปรึกษาผู้เชี่ยวชาญที่เหมาะกับคุณ',

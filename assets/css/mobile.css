@@ -942,13 +942,17 @@
   }
 
   .page-home .feature-panel {
-    padding: 20px 16px;
+    padding: 0;
     border-radius: 18px;
+  }
+
+  .page-home .feature-grid__content {
+    padding: 20px 16px 16px;
   }
 
   .page-home .feature-section .feature-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 0;
   }
 
   .page-home .feature-grid__visual {
@@ -1541,11 +1545,46 @@
     gap: var(--mobile-gap);
   }
 
-  /* ===== FAQ ===== */
+  /* ===== FAQ / Testimonials ===== */
   body:not(.page-home) .faq-grid,
   .page-home .faq-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .page-home .testimonials-section {
+    padding: 48px 0 40px;
+  }
+
+  .page-home .testimonials-section .section-title {
+    font-size: clamp(26px, 7vw, 34px);
+    line-height: 1.25;
+    margin-bottom: 24px;
+  }
+
+  .page-home .testimonial-card {
+    min-height: 0;
+    padding: 22px 20px;
+  }
+
+  .page-home .testimonial-dots {
+    margin-top: 24px;
+  }
+
+  .page-home .faq-section {
+    padding: 48px 0;
+  }
+
+  .page-home .faq-section .section-title {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+
+  .page-home .faq-section__intro {
+    font-size: 15px;
+  }
+
+  .page-home .faq-section__head {
+    margin-bottom: 28px;
   }
 
   /* ===== Typography scale-down ===== */

@@ -27,6 +27,27 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
     </div>
     <nav class="flex-1 overflow-y-auto p-3 space-y-4 text-sm">
       <?php
+      $adminNavIcon = static function (string $name): string {
+        $map = [
+          'dashboard' => 'layout-dashboard',
+          'pages' => 'file-text',
+          'faq' => 'circle-help',
+          'plans' => 'shield-check',
+          'categories' => 'folder-tree',
+          'blogs' => 'newspaper',
+          'promos' => 'badge-percent',
+          'blocks' => 'boxes',
+          'hospitals' => 'hospital',
+          'filters' => 'funnel',
+          'contacts' => 'mail',
+          'users' => 'users',
+          'settings' => 'settings',
+          'seed' => 'cloud-download',
+          'publish' => 'upload',
+        ];
+        $icon = $map[$name] ?? 'file-text';
+        return '<i data-lucide="' . htmlspecialchars($icon) . '" class="admin-sidebar-icon" aria-hidden="true"></i>';
+      };
       $navLink = fn($page, $label, $icon) => [
         'href' => ADMIN_URL . '/' . $page . '.php',
         'active' => $currentPage === $page,
@@ -48,11 +69,11 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
           $navLink('promotions', 'โปรโมชัน', 'promos'),
         ],
         'ระบบ' => [
-          $navLink('blocks', 'บล็อกเนื้อหา', 'pages'),
-          $navLink('hospitals', 'โรงพยาบาล', 'pages'),
-          $navLink('promo-filters', 'ตัวกรองโปรโมชัน', 'pages'),
+          $navLink('blocks', 'บล็อกเนื้อหา', 'blocks'),
+          $navLink('hospitals', 'โรงพยาบาล', 'hospitals'),
+          $navLink('promo-filters', 'ตัวกรองโปรโมชัน', 'filters'),
           $navLink('contacts', 'ข้อความติดต่อ', 'contacts'),
-          $navLink('users', 'ผู้ดูแลระบบ', 'settings'),
+          $navLink('users', 'ผู้ดูแลระบบ', 'users'),
           $navLink('settings', 'ตั้งค่าเว็บไซต์', 'settings'),
         ],
       ];
@@ -63,7 +84,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
           <?php foreach ($items as $item): ?>
           <a href="<?= $item['href'] ?>"
              class="admin-sidebar-link <?= $item['active'] ? 'admin-sidebar-link--active' : '' ?>">
-            <span class="w-1.5 h-1.5 rounded-full flex-shrink-0 <?= $item['active'] ? 'bg-white' : 'bg-slate-300' ?>"></span>
+            <?= $adminNavIcon($item['icon']) ?>
             <span class="leading-snug"><?= $item['label'] ?></span>
           </a>
           <?php endforeach; ?>
@@ -72,9 +93,13 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
       <?php endforeach; ?>
 
       <div class="pt-2 border-t border-slate-100 space-y-1">
-        <a href="<?= ADMIN_URL ?>/seed.php" class="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-500 hover:bg-slate-50 text-xs">นำเข้าข้อมูลเริ่มต้น</a>
+        <a href="<?= ADMIN_URL ?>/seed.php" class="flex items-center gap-2 px-3 py-2 rounded-lg text-slate-500 hover:bg-slate-50 text-xs">
+          <?= $adminNavIcon('seed') ?>
+          นำเข้าข้อมูลเริ่มต้น
+        </a>
         <a href="<?= ADMIN_URL ?>/api/publish.php" onclick="return confirm('เผยแพร่การเปลี่ยนแปลงทั้งหมดไปยังเว็บไซต์?')"
            class="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-50 text-emerald-700 hover:bg-emerald-100 font-medium text-xs">
+          <?= $adminNavIcon('publish') ?>
           เผยแพร่เว็บไซต์
         </a>
       </div>
@@ -86,7 +111,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
           <span class="text-sm text-slate-700"><?= htmlspecialchars(adminName()) ?></span>
         </div>
         <a href="<?= ADMIN_URL ?>/logout.php" class="text-slate-400 hover:text-red-500" title="ออกจากระบบ">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"/></svg>
+          <i data-lucide="log-out" class="admin-sidebar-icon" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -96,7 +121,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
 <div class="lg:ps-64 min-h-screen">
   <header class="sticky top-0 z-30 bg-white/90 backdrop-blur border-b border-slate-200 px-4 sm:px-6 py-3 flex items-center gap-4">
     <button type="button" class="lg:hidden text-slate-500" data-hs-overlay="#hs-sidebar">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      <i data-lucide="menu" class="w-6 h-6" aria-hidden="true"></i>
     </button>
     <h2 class="text-lg font-semibold text-slate-800"><?= $pageTitle ?? '' ?></h2>
     <div class="ms-auto">

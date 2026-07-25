@@ -64,7 +64,7 @@
   max-width: none;
   height: auto;
   min-height: 0;
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -2060,6 +2060,17 @@
 .page-home .testimonial-card__stars {
   margin-bottom: 14px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: #e87722;
+}
+
+.page-home .testimonial-card__stars [data-lucide] {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  stroke: currentColor;
 }
 
 .page-home .testimonial-card__text {
@@ -2160,11 +2171,12 @@
 .page-home .feature-panel {
   max-width: 1306px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 0;
   border-radius: 24px;
   background: #fff;
   border: 1px solid rgba(21, 15, 150, 0.1);
   box-shadow: 0 12px 40px rgba(40, 36, 31, 0.06);
+  overflow: hidden;
 }
 
 .page-home .feature-section .about-cta {
@@ -2172,7 +2184,7 @@
   max-width: 1306px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 40px 0;
+  padding: 0;
 }
 
 .page-home .feature-section .about-cta__card {
@@ -2184,20 +2196,23 @@
 .page-home .feature-section .feature-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: 48px 56px;
-  align-items: center;
+  gap: 0 48px;
+  align-items: stretch;
 }
 
 .page-home .feature-grid__visual {
   position: relative;
+  min-height: 100%;
 }
 
 .page-home .feature-grid__image {
   width: 100%;
-  aspect-ratio: 600 / 434;
-  border-radius: 20px;
+  height: 100%;
+  min-height: 480px;
+  aspect-ratio: auto;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 8px 28px rgba(21, 15, 150, 0.12);
+  box-shadow: none;
 }
 
 .page-home .feature-grid__image img {
@@ -2205,6 +2220,11 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 0;
+}
+
+.page-home .feature-grid__content {
+  padding: 40px 40px 40px 0;
 }
 
 .page-home .feature-grid__badge {
@@ -2420,6 +2440,11 @@
   margin: 0 auto;
 }
 
+.page-home .faq-section__more {
+  margin: 36px 0 0;
+  text-align: center;
+}
+
 .page-home .faq-col {
   display: flex;
   flex-direction: column;
@@ -2610,20 +2635,27 @@
   }
 
   .page-home .feature-panel {
-    padding: 28px 24px;
+    padding: 0;
   }
 
   .page-home .feature-section .about-cta {
-    padding: 0 24px;
+    padding: 0;
   }
 
   .page-home .feature-section .feature-grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 0;
+  }
+
+  .page-home .feature-grid__content {
+    padding: 28px 24px 24px;
   }
 
   .page-home .feature-grid__image {
     aspect-ratio: 16 / 11;
+    min-height: 0;
+    height: auto;
+    border-radius: 0;
   }
 
   .page-home .feature-cards {
