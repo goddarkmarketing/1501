@@ -2,3 +2,5 @@ node_modules/
 .DS_Store
 Thumbs.db
 *.log
+admin/config.local.php
+admin/install.lock
