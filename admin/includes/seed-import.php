@@ -1,16 +1,31 @@
 <?php
 
 function importSeedDataFromJs(): array {
+    // 1) Prefer committed JSON (works on hosting without Node.js)
+    $jsonFile = SITE_ROOT . '/admin/data/seed-data.json';
+    if (is_file($jsonFile)) {
+        $raw = file_get_contents($jsonFile);
+        // Strip UTF-8 BOM if present
+        if (strncmp($raw, "\xEF\xBB\xBF", 3) === 0) {
+            $raw = substr($raw, 3);
+        }
+        $data = json_decode($raw, true);
+        if (is_array($data) && (isset($data['plans']) || isset($data['articles']) || isset($data['promotions']))) {
+            return $data;
+        }
+    }
+
+    // 2) Fallback: Node export script (local/dev only)
     $script = SITE_ROOT . '/admin/scripts/export-seed-data.cjs';
     if (!file_exists($script)) {
-        throw new RuntimeException('ไม่พบสคริปต์ export-seed-data.cjs');
+        throw new RuntimeException('ไม่พบ seed-data.json และไม่มีสคริปต์ export-seed-data.cjs');
     }
 
     $node = 'node';
     $cmd = escapeshellarg($node) . ' ' . escapeshellarg($script) . ' ' . escapeshellarg(SITE_ROOT);
-    $json = shell_exec($cmd);
+    $json = @shell_exec($cmd);
     if (!$json) {
-        throw new RuntimeException('ไม่สามารถอ่านข้อมูลจากไฟล์ JS ได้ — ตรวจสอบว่าติดตั้ง Node.js แล้ว');
+        throw new RuntimeException('ไม่พบไฟล์ admin/data/seed-data.json และโฮสต์ไม่มี Node.js — Deploy ไฟล์ seed-data.json ขึ้นเซิร์ฟเวอร์ หรือเอาติ๊กนำเข้าข้อมูลออกแล้วติดตั้งก่อน');
     }
 
     $data = json_decode($json, true);

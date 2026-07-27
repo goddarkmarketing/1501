@@ -163,12 +163,16 @@ if (isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST') 
             }
 
             if ($prefill['run_seed'] === '1' && is_file(__DIR__ . '/includes/seed-import.php')) {
-                require_once __DIR__ . '/config.php';
-                require_once __DIR__ . '/includes/db.php';
-                require_once __DIR__ . '/includes/seed-import.php';
-                $categories = require __DIR__ . '/seed-categories.php';
-                $stats = runFullSeedImport($categories);
-                $seedNote = 'Seed OK: plans=' . (int) $stats['plans'] . ', blogs=' . (int) $stats['blogs'] . ', promos=' . (int) $stats['promos'];
+                try {
+                    require_once __DIR__ . '/config.php';
+                    require_once __DIR__ . '/includes/db.php';
+                    require_once __DIR__ . '/includes/seed-import.php';
+                    $categories = require __DIR__ . '/seed-categories.php';
+                    $stats = runFullSeedImport($categories);
+                    $seedNote = 'Seed OK: plans=' . (int) $stats['plans'] . ', blogs=' . (int) $stats['blogs'] . ', promos=' . (int) $stats['promos'];
+                } catch (Exception $seedEx) {
+                    $seedNote = 'DB installed, but seed skipped: ' . $seedEx->getMessage();
+                }
             }
 
             @file_put_contents($lockFile, date('c') . "\n");
