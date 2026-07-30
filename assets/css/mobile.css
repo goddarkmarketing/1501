@@ -1659,23 +1659,23 @@
     font-size: 16px;
   }
 
-  .page-home .hero-fab-wrap {
+  .hero-fab-wrap {
     bottom: 20px;
     right: 16px;
   }
 
-  .page-home .hero__fab {
+  .hero__fab {
     width: 56px;
     height: 56px;
     border-radius: 14px;
   }
 
-  .page-home .hero-fab-panel {
+  .hero-fab-panel {
     width: min(300px, calc(100vw - 32px));
     padding: 14px;
   }
 
-  .page-home .hero-fab-channel {
+  .hero-fab-channel {
     min-height: 56px;
     padding: 10px;
   }

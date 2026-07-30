@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <h3 class="text-white font-semibold mb-2">นำเข้าข้อมูลจากไฟล์ JS ปัจจุบัน</h3>
   <p class="text-gray-400 text-sm mb-6">ใช้ครั้งแรกหลังติดตั้งฐานข้อมูล เพื่อโหลดหมวดหมู่ แผนประกัน บทความ และโปรโมชันจากไฟล์ <code class="text-gray-300">assets/js/*-data.js</code> เข้า MySQL</p>
   <form method="POST" onsubmit="return confirm('นำเข้าข้อมูล? ข้อมูลเดิมในตารางที่ซ้ำจะถูกแทนที่');">
-    <button type="submit" class="bg-brand hover:bg-brand-light text-white font-semibold px-6 py-3 rounded-lg text-sm">เริ่มนำเข้าข้อมูล</button>
+    <button type="submit" class="admin-btn-primary px-6 py-3 text-sm">เริ่มนำเข้าข้อมูล</button>
   </form>
   <p class="text-gray-500 text-xs mt-4">หลังนำเข้าแล้ว แก้ไขใน Admin แล้วกด <strong class="text-emerald-400">เผยแพร่เว็บไซต์</strong> ในเมนูซ้าย</p>
 </div>

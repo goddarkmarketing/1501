@@ -22,7 +22,13 @@ try {
 try {
     $jsonPath = SITE_ROOT . '/assets/data/hospital-locator.json';
     $hospitalData = file_exists($jsonPath) ? json_decode(file_get_contents($jsonPath), true) : [];
-    $stats['hospitals'] = is_array($hospitalData) ? count($hospitalData) : 0;
+    if (is_array($hospitalData) && isset($hospitalData['results']) && is_array($hospitalData['results'])) {
+        $stats['hospitals'] = count($hospitalData['results']);
+    } elseif (is_array($hospitalData)) {
+        $stats['hospitals'] = count($hospitalData);
+    } else {
+        $stats['hospitals'] = 0;
+    }
 } catch (Exception $e) { $stats['hospitals'] = 0; }
 
 try {

@@ -422,8 +422,19 @@ body.admin-app {
 }
 
 /* Legacy dark page fixes — scope to main content only (not sidebar) */
-.admin-app main .text-white {
+.admin-app main .text-white:not(button):not(.bg-brand):not([class*="bg-brand"]) {
   color: #1e293b !important;
+}
+
+.admin-app main button.bg-brand,
+.admin-app main a.bg-brand,
+.admin-app main .bg-brand {
+  color: #fff !important;
+}
+
+.admin-app main button.bg-brand:hover,
+.admin-app main a.bg-brand:hover {
+  color: #fff !important;
 }
 
 .admin-app main .bg-gray-900,

@@ -239,10 +239,10 @@ require_once __DIR__ . '/includes/header.php';
 
   <!-- Submit -->
   <div class="flex items-center gap-4">
-    <button type="submit" class="bg-brand hover:bg-brand-light text-white font-semibold px-6 py-3 rounded-lg transition">
+    <button type="submit" class="admin-btn-primary px-6 py-3">
       <?= $isEdit ? 'บันทึกการเปลี่ยนแปลง' : 'สร้างโปรโมชันใหม่' ?>
     </button>
-    <a href="<?= ADMIN_URL ?>/promotions.php" class="text-gray-400 hover:text-white text-sm transition">ยกเลิก</a>
+    <a href="<?= ADMIN_URL ?>/promotions.php" class="text-slate-500 hover:text-brand text-sm">ยกเลิก</a>
   </div>
 </form>
 

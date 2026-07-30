@@ -3,6 +3,7 @@
  * Requires: site-content.js (SITE_SETTINGS, SITE_BLOCKS, SITE_NAV_MENUS)
  */
 document.addEventListener('DOMContentLoaded', () => {
+  ensureSiteFab();
   initSiteSettings();
   initSiteFooter();
   initSiteBlocks();
@@ -11,6 +12,100 @@ document.addEventListener('DOMContentLoaded', () => {
   applyVisualOverrides();
   initCmsPreviewBridge();
 });
+
+function ensureSiteFab() {
+  if (document.getElementById('heroFabWrap')) return;
+
+  const s = typeof SITE_SETTINGS !== 'undefined' ? SITE_SETTINGS : {};
+  const phone = s.phone || '065-651-5328';
+  const phoneTel = String(phone).replace(/[^\d+]/g, '') || '66656515328';
+  const email = s.email || 'me.agentthailand@gmail.com';
+  const facebook = s.facebook_url || 'https://www.facebook.com/AgentThailandFWD';
+  const line = s.line_url || 'https://line.me/ti/p/~@agentthailand';
+  const tiktok = s.tiktok_url || 'https://www.tiktok.com/@agentthailand';
+  const facebookName = s.facebook || 'Agent Thailand';
+  const lineId = s.line_id || '@agentthailand';
+  const tiktokName = s.tiktok || '@agentthailand';
+
+  const wrap = document.createElement('div');
+  wrap.className = 'hero-fab-wrap';
+  wrap.id = 'heroFabWrap';
+  wrap.innerHTML = `
+  <div class="hero-fab-panel" id="heroFabPanel" role="dialog" aria-label="ช่องทางติดต่อ" aria-hidden="true">
+    <p class="hero-fab-panel__title">ติดต่อเรา</p>
+    <ul class="hero-fab-panel__list">
+      <li>
+        <a href="contact.html" class="hero-fab-channel hero-fab-channel--buy">
+          <span class="hero-fab-channel__icon" aria-hidden="true"><i data-lucide="shield-plus"></i></span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">ซื้อประกัน</span>
+            <span class="hero-fab-channel__value">กรอกแบบฟอร์มปรึกษา</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="register.html" class="hero-fab-channel hero-fab-channel--agent">
+          <span class="hero-fab-channel__icon" aria-hidden="true"><i data-lucide="user-plus"></i></span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">สมัครตัวแทน</span>
+            <span class="hero-fab-channel__value">สมัครเป็นตัวแทน FWD</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="${esc(facebook)}" class="hero-fab-channel hero-fab-channel--facebook" target="_blank" rel="noopener noreferrer">
+          <span class="hero-fab-channel__icon" aria-hidden="true"><i data-lucide="facebook"></i></span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">Facebook</span>
+            <span class="hero-fab-channel__value">${esc(facebookName)}</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="${esc(line)}" class="hero-fab-channel hero-fab-channel--line" target="_blank" rel="noopener noreferrer">
+          <span class="hero-fab-channel__icon" aria-hidden="true"><i data-lucide="message-circle"></i></span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">LINE</span>
+            <span class="hero-fab-channel__value">${esc(lineId)}</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="${esc(tiktok)}" class="hero-fab-channel hero-fab-channel--tiktok" target="_blank" rel="noopener noreferrer">
+          <span class="hero-fab-channel__icon" aria-hidden="true"><i data-lucide="music-2"></i></span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">TikTok</span>
+            <span class="hero-fab-channel__value">${esc(tiktokName)}</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="mailto:${esc(email)}" class="hero-fab-channel hero-fab-channel--email">
+          <span class="hero-fab-channel__icon" aria-hidden="true"><i data-lucide="mail"></i></span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">อีเมล</span>
+            <span class="hero-fab-channel__value">${esc(email)}</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="tel:${esc(phoneTel)}" class="hero-fab-channel hero-fab-channel--phone">
+          <span class="hero-fab-channel__icon" aria-hidden="true"><i data-lucide="phone"></i></span>
+          <span class="hero-fab-channel__body">
+            <span class="hero-fab-channel__label">โทรศัพท์</span>
+            <span class="hero-fab-channel__value">${esc(phone)}</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <button type="button" class="hero__fab" id="heroFabBtn" aria-expanded="false" aria-controls="heroFabPanel" aria-label="เปิดช่องทางติดต่อ">
+    <i data-lucide="headphones" aria-hidden="true"></i>
+  </button>`;
+
+  document.body.appendChild(wrap);
+  if (typeof lucide !== 'undefined') lucide.createIcons();
+}
 
 function applyVisualOverrides() {
   if (typeof SITE_BLOCKS === 'undefined' || !SITE_BLOCKS.visual_overrides) return;
