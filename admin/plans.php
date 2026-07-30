@@ -52,7 +52,7 @@ require_once __DIR__ . '/includes/header.php';
   ยังไม่มีแผนประกัน — <a href="<?= ADMIN_URL ?>/seed.php" class="text-brand hover:underline">นำเข้าข้อมูลเริ่มต้น</a>
 </div>
 <?php else: ?>
-<div class="admin-card overflow-hidden">
+<div class="admin-card overflow-hidden" data-feedback-id="package-list">
   <table class="admin-table w-full">
     <thead>
       <tr>

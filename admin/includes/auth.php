@@ -23,7 +23,25 @@ function requireLogin(): void {
     }
 }
 
+function requireAdminAccess(): void {
+    if (isLoggedIn()) {
+        return;
+    }
+    require_once __DIR__ . '/feedback-lib.php';
+    if (feedbackPreviewRequested()) {
+        feedbackActivatePreview();
+    }
+    if (feedbackPreviewActive() && isFeedbackReview()) {
+        return;
+    }
+    header('Location: ' . ADMIN_URL . '/login.php');
+    exit;
+}
+
 function adminName(): string {
+    if (empty($_SESSION['admin_id']) && !empty($_SESSION['feedback_review'])) {
+        return 'ผู้ตรวจงาน';
+    }
     return $_SESSION['admin_name'] ?? 'Admin';
 }
 

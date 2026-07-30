@@ -122,6 +122,11 @@ try {
     require_once __DIR__ . '/includes/cms.php';
     seedCmsBlocksIfEmpty();
 
+    // Feedback review settings (safe defaults)
+    require_once __DIR__ . '/includes/feedback-lib.php';
+    feedbackReviewToken();
+    feedbackReviewPasswordHash();
+
     echo "Migration completed successfully.\n";
     echo "CMS blocks seeded: " . $pdo->query('SELECT COUNT(*) FROM cms_blocks')->fetchColumn() . "\n";
 } catch (Throwable $e) {

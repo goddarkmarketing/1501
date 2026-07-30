@@ -50,7 +50,7 @@ $statusColors = ['new' => 'bg-blue-900/30 text-blue-400', 'contacted' => 'bg-yel
 ?>
 
 <!-- Stats Cards -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8" data-feedback-id="dashboard-summary">
   <?php foreach ($cards as $card): ?>
   <div class="admin-card p-6 flex items-center gap-4">
     <div class="w-12 h-12 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
@@ -65,7 +65,7 @@ $statusColors = ['new' => 'bg-blue-900/30 text-blue-400', 'contacted' => 'bg-yel
 </div>
 
 <!-- Quick Actions -->
-<div class="admin-card p-6 mb-8">
+<div class="admin-card p-6 mb-8" data-feedback-id="dashboard-quick-actions">
   <h3 class="text-base font-semibold text-slate-800 mb-4">ทางลัด</h3>
   <div class="flex flex-wrap gap-3">
     <a href="<?= ADMIN_URL ?>/pages.php" class="admin-btn-outline">จัดการหน้าเว็บ</a>
@@ -79,7 +79,7 @@ $statusColors = ['new' => 'bg-blue-900/30 text-blue-400', 'contacted' => 'bg-yel
 </div>
 
 <!-- Recent Contacts -->
-<div class="admin-card overflow-hidden">
+<div class="admin-card overflow-hidden" data-feedback-id="dashboard-recent-contacts">
   <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
     <h3 class="text-base font-semibold text-slate-800">ข้อความติดต่อล่าสุด</h3>
     <a href="<?= ADMIN_URL ?>/contacts.php" class="text-sm text-brand hover:underline">ดูทั้งหมด →</a>

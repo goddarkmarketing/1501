@@ -4,3 +4,7 @@ Thumbs.db
 *.log
 admin/config.local.php
 admin/install.lock
+admin/data/feedback/feedback.json
+admin/data/feedback/images/*
+!admin/data/feedback/images/.gitkeep
+!admin/data/feedback/.gitkeep
