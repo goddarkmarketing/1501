@@ -422,6 +422,11 @@ function cmsNavMenuHasProducts(array $menu): bool {
             continue;
         }
         foreach (($col['groups'] ?? []) as $group) {
+            $title = (string) ($group['title'] ?? '');
+            $category = (string) ($group['category'] ?? '');
+            if (preg_match('/^ATEST_/i', $title) || preg_match('/^ATEST_/i', $category)) {
+                continue;
+            }
             if (!empty($group['products']) && is_array($group['products'])) {
                 return true;
             }

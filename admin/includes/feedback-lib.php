@@ -9,6 +9,10 @@ function feedbackJsonPath(): string {
     return feedbackBaseDir() . '/feedback.json';
 }
 
+function feedbackStatusOverridesPath(): string {
+    return feedbackBaseDir() . '/status-overrides.json';
+}
+
 function feedbackImagesDir(): string {
     return feedbackBaseDir() . '/images';
 }
@@ -109,11 +113,44 @@ function feedbackSetSetting(string $key, string $value): void {
     }
 }
 
+function feedbackLoadStatusOverrides(): array {
+    $path = feedbackStatusOverridesPath();
+    if (!is_file($path)) {
+        return [];
+    }
+    $data = json_decode((string) file_get_contents($path), true);
+    return is_array($data) ? $data : [];
+}
+
+function feedbackSaveStatusOverrides(array $overrides): void {
+    feedbackEnsureDirs();
+    file_put_contents(
+        feedbackStatusOverridesPath(),
+        json_encode($overrides, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n"
+    );
+}
+
+function feedbackApplyStatusOverrides(array $items): array {
+    $overrides = feedbackLoadStatusOverrides();
+    if (!$overrides) {
+        return $items;
+    }
+    foreach ($items as &$item) {
+        $id = (string) ($item['id'] ?? '');
+        if ($id !== '' && isset($overrides[$id]) && is_string($overrides[$id])) {
+            $item['status'] = $overrides[$id];
+        }
+    }
+    unset($item);
+    return $items;
+}
+
 function feedbackLoadItems(): array {
     feedbackEnsureDirs();
     $raw = file_get_contents(feedbackJsonPath());
     $data = json_decode($raw ?: '[]', true);
-    return is_array($data) ? $data : [];
+    $items = is_array($data) ? $data : [];
+    return feedbackApplyStatusOverrides($items);
 }
 
 function feedbackSaveItems(array $items): void {
@@ -221,7 +258,13 @@ function feedbackUpdateStatus(string $id, string $status): bool {
     if (!isset(feedbackStatuses()[$status])) {
         return false;
     }
-    $items = feedbackLoadItems();
+    // Load raw JSON without overrides so manual edits persist in feedback.json
+    feedbackEnsureDirs();
+    $raw = file_get_contents(feedbackJsonPath());
+    $items = json_decode($raw ?: '[]', true);
+    if (!is_array($items)) {
+        $items = [];
+    }
     $found = false;
     foreach ($items as &$item) {
         if (($item['id'] ?? '') === $id) {
@@ -233,6 +276,9 @@ function feedbackUpdateStatus(string $id, string $status): bool {
     unset($item);
     if ($found) {
         feedbackSaveItems($items);
+        $overrides = feedbackLoadStatusOverrides();
+        $overrides[$id] = $status;
+        feedbackSaveStatusOverrides($overrides);
     }
     return $found;
 }

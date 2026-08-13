@@ -247,17 +247,28 @@ function getNavMegaMenus() {
   const defaults = NAV_MEGA_MENUS;
   if (typeof SITE_NAV_MENUS === 'undefined') return defaults;
 
-  const hasContent = (menu) => {
-    if (!Array.isArray(menu) || !menu.length) return false;
-    return menu.some((col) =>
-      Array.isArray(col?.groups) &&
-      col.groups.some((g) => Array.isArray(g?.products) && g.products.length > 0)
-    );
+  const isJunkGroup = (group) => {
+    const title = String(group?.title || '');
+    const category = String(group?.category || '');
+    return /^ATEST_/i.test(title) || /^ATEST_/i.test(category);
+  };
+
+  const sanitizeNavMenu = (menu, fallback) => {
+    if (!Array.isArray(menu) || !menu.length) return fallback;
+    const cleaned = menu
+      .map((col) => ({
+        ...col,
+        groups: (Array.isArray(col?.groups) ? col.groups : []).filter(
+          (g) => !isJunkGroup(g) && Array.isArray(g?.products) && g.products.length > 0
+        ),
+      }))
+      .filter((col) => Array.isArray(col.groups) && col.groups.length > 0);
+    return cleaned.length > 0 ? cleaned : fallback;
   };
 
   return {
-    products: hasContent(SITE_NAV_MENUS.products) ? SITE_NAV_MENUS.products : defaults.products,
-    services: hasContent(SITE_NAV_MENUS.services) ? SITE_NAV_MENUS.services : defaults.services,
+    products: sanitizeNavMenu(SITE_NAV_MENUS.products, defaults.products),
+    services: sanitizeNavMenu(SITE_NAV_MENUS.services, defaults.services),
   };
 }
 
