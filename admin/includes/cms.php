@@ -143,17 +143,32 @@ function getCmsBlockDefinitions(): array {
     ];
 }
 
+function parseJsArrayLiteral(string $js): array {
+    $js = trim($js);
+    // Drop trailing commas before } or ]
+    $js = preg_replace('/,\s*([}\]])/', '$1', $js);
+    // Quote bare object keys
+    $js = preg_replace('/([{\[,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:/', '$1"$2":', $js);
+    // Convert single-quoted strings to JSON double-quoted
+    $js = preg_replace_callback("/'([^'\\\\]*(?:\\\\.[^'\\\\]*)*)'/", static function ($m) {
+        return json_encode($m[1], JSON_UNESCAPED_UNICODE);
+    }, $js);
+    $decoded = json_decode($js, true);
+    return is_array($decoded) ? $decoded : [];
+}
+
 function getDefaultCmsBlocks(): array {
     $planNavFile = SITE_ROOT . '/assets/js/hero-form-data.js';
     $planNav = [];
     $serviceNav = [];
     if (file_exists($planNavFile)) {
         $src = file_get_contents($planNavFile);
-        if (preg_match('/const PLAN_NAV_MEGA_MENU = (\[[\s\S]*\])\s*;/m', $src, $m)) {
-            $planNav = json_decode($m[1], true) ?: [];
+        // Non-greedy: stop at first ]; before the next const
+        if (preg_match('/const PLAN_NAV_MEGA_MENU = (\[[\s\S]*?\]);\s*const /m', $src, $m)) {
+            $planNav = parseJsArrayLiteral($m[1]);
         }
-        if (preg_match('/const SERVICE_NAV_MEGA_MENU = (\[[\s\S]*\])\s*;/m', $src, $m)) {
-            $serviceNav = json_decode($m[1], true) ?: [];
+        if (preg_match('/const SERVICE_NAV_MEGA_MENU = (\[[\s\S]*?\]);\s*const /m', $src, $m)) {
+            $serviceNav = parseJsArrayLiteral($m[1]);
         }
     }
 
@@ -384,6 +399,14 @@ function getCmsBlock(string $key): array|string {
                 return $decoded;
             }
             if (is_array($decoded)) {
+                // Empty list blocks should fall back to defaults (avoid blank mega menus)
+                if (($key === 'plan_nav_menu' || $key === 'service_nav_menu') && $decoded === []) {
+                    return is_array($default) ? $default : [];
+                }
+                // Indexed menu columns: prefer stored value as full replace, not recursive merge
+                if ($key === 'plan_nav_menu' || $key === 'service_nav_menu') {
+                    return cmsNavMenuHasProducts($decoded) ? $decoded : (is_array($default) ? $default : []);
+                }
                 return is_array($default) ? array_replace_recursive($default, $decoded) : $decoded;
             }
         }
@@ -391,6 +414,20 @@ function getCmsBlock(string $key): array|string {
         // table may not exist
     }
     return $default;
+}
+
+function cmsNavMenuHasProducts(array $menu): bool {
+    foreach ($menu as $col) {
+        if (!is_array($col)) {
+            continue;
+        }
+        foreach (($col['groups'] ?? []) as $group) {
+            if (!empty($group['products']) && is_array($group['products'])) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 function saveCmsBlock(string $key, array|string $data): void {

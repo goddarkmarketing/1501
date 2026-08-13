@@ -244,14 +244,21 @@ function initPlanNavDropdown() {
 }
 
 function getNavMegaMenus() {
-  if (typeof SITE_NAV_MENUS !== 'undefined') {
-    const hasProducts = Array.isArray(SITE_NAV_MENUS.products) && SITE_NAV_MENUS.products.length > 0;
-    const hasServices = Array.isArray(SITE_NAV_MENUS.services) && SITE_NAV_MENUS.services.length > 0;
-    if (hasProducts || hasServices) {
-      return SITE_NAV_MENUS;
-    }
-  }
-  return NAV_MEGA_MENUS;
+  const defaults = NAV_MEGA_MENUS;
+  if (typeof SITE_NAV_MENUS === 'undefined') return defaults;
+
+  const hasContent = (menu) => {
+    if (!Array.isArray(menu) || !menu.length) return false;
+    return menu.some((col) =>
+      Array.isArray(col?.groups) &&
+      col.groups.some((g) => Array.isArray(g?.products) && g.products.length > 0)
+    );
+  };
+
+  return {
+    products: hasContent(SITE_NAV_MENUS.products) ? SITE_NAV_MENUS.products : defaults.products,
+    services: hasContent(SITE_NAV_MENUS.services) ? SITE_NAV_MENUS.services : defaults.services,
+  };
 }
 
 function initNavDropdowns() {

@@ -93,6 +93,16 @@ require_once __DIR__ . '/includes/header.php';
 </div>
 
 <form method="POST" class="space-y-6" data-feedback-id="hospital-edit-form">
+  <div class="admin-card p-6 border-brand/20">
+    <h3 class="text-base font-semibold text-slate-800 mb-1">วางลิงก์ Google Maps (อัตโนมัติ)</h3>
+    <p class="text-sm text-slate-500 mb-4">วางลิงก์หรือพิกัดจาก Google Maps แล้วกด “ดึงข้อมูล” — ระบบจะเติมพิกัดและพยายามอ่านชื่อสถานที่ให้</p>
+    <div class="flex flex-col sm:flex-row gap-2">
+      <input type="text" id="gmapsPaste" class="admin-input flex-1" placeholder="เช่น https://maps.google.com/... หรือ 13.7563, 100.5018">
+      <button type="button" id="gmapsFillBtn" class="admin-btn-primary whitespace-nowrap">ดึงข้อมูล</button>
+    </div>
+    <p id="gmapsHint" class="text-xs text-slate-400 mt-2"></p>
+  </div>
+
   <div class="admin-card p-6">
     <h3 class="text-base font-semibold text-slate-800 mb-4">ข้อมูลหลัก</h3>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -204,5 +214,111 @@ require_once __DIR__ . '/includes/header.php';
     <?php endif; ?>
   </div>
 </form>
+
+<script>
+(function () {
+  var paste = document.getElementById('gmapsPaste');
+  var btn = document.getElementById('gmapsFillBtn');
+  var hint = document.getElementById('gmapsHint');
+  if (!paste || !btn) return;
+
+  function setVal(id, value) {
+    var el = document.getElementById(id);
+    if (el && value) el.value = value;
+  }
+
+  function parsePaste(raw) {
+    raw = String(raw || '').trim();
+    var result = { lat: '', lng: '', name: '', address: '' };
+    if (!raw) return result;
+
+    // Plain "lat, lng"
+    var pair = raw.match(/(-?\d{1,2}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)/);
+    if (pair && !/maps\.|goo\.gl|google/i.test(raw)) {
+      result.lat = pair[1];
+      result.lng = pair[2];
+      return result;
+    }
+
+    // Google Maps URL patterns
+    var at = raw.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+    if (at) {
+      result.lat = at[1];
+      result.lng = at[2];
+    }
+    if (!result.lat) {
+      var qll = raw.match(/[?&](?:q|query)=(-?\d+\.\d+),(-?\d+\.\d+)/i);
+      if (qll) {
+        result.lat = qll[1];
+        result.lng = qll[2];
+      }
+    }
+    if (!result.lat) {
+      var d3 = raw.match(/!3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
+      if (d3) {
+        result.lat = d3[1];
+        result.lng = d3[2];
+      }
+    }
+    if (!result.lat && pair) {
+      result.lat = pair[1];
+      result.lng = pair[2];
+    }
+
+    // Place name from /place/Name/
+    var place = raw.match(/\/place\/([^\/?#]+)/);
+    if (place) {
+      try {
+        result.name = decodeURIComponent(place[1].replace(/\+/g, ' ')).replace(/,/g, ' ').trim();
+      } catch (e) {
+        result.name = place[1].replace(/\+/g, ' ');
+      }
+    }
+
+    // Query text
+    if (!result.name) {
+      var qText = raw.match(/[?&](?:q|query)=([^&]+)/i);
+      if (qText && !/^-?\d+\.\d+,-?\d+\.\d+$/.test(decodeURIComponent(qText[1]))) {
+        try {
+          result.address = decodeURIComponent(qText[1].replace(/\+/g, ' '));
+        } catch (e) {
+          result.address = qText[1];
+        }
+      }
+    }
+
+    return result;
+  }
+
+  function apply() {
+    var data = parsePaste(paste.value);
+    if (!data.lat || !data.lng) {
+      hint.textContent = 'ไม่พบพิกัดในลิงก์ — ลองวางลิงก์ที่มี @lat,lng หรือพิกัดแบบ 13.75, 100.50';
+      hint.className = 'text-xs text-amber-600 mt-2';
+      return;
+    }
+    setVal('latitude', data.lat);
+    setVal('longitude', data.lng);
+    if (data.name) {
+      var nameEl = document.getElementById('name');
+      if (nameEl && !nameEl.value.trim()) nameEl.value = data.name;
+    }
+    if (data.address) {
+      var street = document.getElementById('streetNumber');
+      if (street && !street.value.trim()) street.value = data.address;
+    }
+    hint.textContent = 'เติมพิกัดแล้ว: ' + data.lat + ', ' + data.lng + (data.name ? ' · ' + data.name : '');
+    hint.className = 'text-xs text-emerald-600 mt-2';
+  }
+
+  btn.addEventListener('click', apply);
+  paste.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      apply();
+    }
+  });
+})();
+</script>
 
 <?php require_once __DIR__ . '/includes/footer.php'; ?>

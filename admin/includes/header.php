@@ -9,6 +9,19 @@ if (feedbackPreviewRequested()) {
 
 requireAdminAccess();
 $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
+
+// Map edit/add subpages to their parent nav item so sidebar stays highlighted
+$navActiveAliases = [
+  'plan-edit' => 'plans',
+  'category-edit' => 'categories',
+  'blog-edit' => 'blogs',
+  'promo-edit' => 'promotions',
+  'hospital-edit' => 'hospitals',
+  'page-edit' => 'pages',
+  'block-edit' => 'blocks',
+  'user-edit' => 'users',
+];
+$navActivePage = $navActiveAliases[$currentPage] ?? $currentPage;
 ?>
 <!DOCTYPE html>
 <html lang="th">
@@ -57,7 +70,7 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
       };
       $navLink = fn($page, $label, $icon) => [
         'href' => feedbackAppendPreview(ADMIN_URL . '/' . $page . '.php'),
-        'active' => $currentPage === $page,
+        'active' => $navActivePage === $page,
         'label' => $label,
         'icon' => $icon,
       ];
@@ -81,7 +94,6 @@ $currentPage = basename($_SERVER['SCRIPT_NAME'], '.php');
         'ระบบ' => [
           $navLink('blocks', 'บล็อกเนื้อหา', 'blocks'),
           $navLink('hospitals', 'โรงพยาบาล', 'hospitals'),
-          $navLink('promo-filters', 'ตัวกรองโปรโมชัน', 'filters'),
           $navLink('contacts', 'ข้อความติดต่อ', 'contacts'),
           $navLink('users', 'ผู้ดูแลระบบ', 'users'),
           $navLink('settings', 'ตั้งค่าเว็บไซต์', 'settings'),
