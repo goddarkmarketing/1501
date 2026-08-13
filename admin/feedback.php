@@ -133,6 +133,14 @@ require_once __DIR__ . '/includes/header.php';
 <?php if (empty($items)): ?>
 <div class="admin-card p-12 text-center text-slate-500">ยังไม่มีรายการ Feedback</div>
 <?php else: ?>
+<?php
+$statusMeta = [
+  'pending' => ['label' => 'รอดำเนินการ', 'icon' => 'clock', 'badge' => 'bg-slate-100 text-slate-600', 'card' => ''],
+  'in-progress' => ['label' => 'กำลังดำเนินการ', 'icon' => 'loader', 'badge' => 'bg-sky-100 text-sky-700', 'card' => 'border-sky-200'],
+  'completed' => ['label' => 'แก้ไขแล้ว', 'icon' => 'circle-check', 'badge' => 'bg-emerald-100 text-emerald-700', 'card' => 'border-emerald-300 bg-emerald-50/40'],
+  'rejected' => ['label' => 'ปฏิเสธ', 'icon' => 'circle-x', 'badge' => 'bg-rose-100 text-rose-700', 'card' => 'border-rose-200 opacity-80'],
+];
+?>
 <div class="space-y-4" data-feedback-id="feedback-list">
   <?php foreach ($items as $fb):
     $fbId = (string) ($fb['id'] ?? '');
@@ -144,8 +152,13 @@ require_once __DIR__ . '/includes/header.php';
       : '';
     $prio = $fb['priority'] ?? 'medium';
     $prioClass = $prio === 'high' ? 'bg-red-100 text-red-700' : ($prio === 'low' ? 'bg-slate-100 text-slate-600' : 'bg-amber-100 text-amber-700');
+    $st = $fb['status'] ?? 'pending';
+    if (!isset($statusMeta[$st])) {
+        $st = 'pending';
+    }
+    $meta = $statusMeta[$st];
   ?>
-  <div class="admin-card p-4 sm:p-5" data-feedback-id="feedback-item-<?= htmlspecialchars($fbId) ?>">
+  <div class="admin-card p-4 sm:p-5 fb-item-card <?= htmlspecialchars($meta['card']) ?>" data-feedback-id="feedback-item-<?= htmlspecialchars($fbId) ?>" data-status="<?= htmlspecialchars($st) ?>">
     <div class="flex flex-col lg:flex-row gap-4">
       <?php if ($imgUrl): ?>
       <button type="button" class="flex-shrink-0 fb-preview-thumb text-left" data-src="<?= htmlspecialchars($imgUrl) ?>" data-alt="<?= htmlspecialchars($fbId) ?>">
@@ -155,6 +168,10 @@ require_once __DIR__ . '/includes/header.php';
       <div class="flex-1 min-w-0">
         <div class="flex flex-wrap items-center gap-2 mb-2">
           <span class="font-bold text-brand"><?= htmlspecialchars($fbId) ?></span>
+          <span class="fb-status-badge inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full <?= htmlspecialchars($meta['badge']) ?>">
+            <i data-lucide="<?= htmlspecialchars($meta['icon']) ?>" class="w-3.5 h-3.5"></i>
+            <span class="fb-status-badge-label"><?= htmlspecialchars($meta['label']) ?></span>
+          </span>
           <span class="text-xs px-2 py-0.5 rounded-full <?= $prioClass ?>"><?= htmlspecialchars($priorities[$prio] ?? $prio) ?></span>
           <span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600"><?= htmlspecialchars($categories[$fb['category'] ?? ''] ?? $fb['category'] ?? '') ?></span>
         </div>
@@ -169,9 +186,10 @@ require_once __DIR__ . '/includes/header.php';
         </div>
       </div>
       <div class="flex flex-col gap-2 lg:w-44">
-        <select class="admin-input text-sm fb-status-select" data-id="<?= htmlspecialchars($fbId) ?>">
+        <label class="text-xs text-slate-500">เปลี่ยนสถานะ</label>
+        <select class="admin-input text-sm fb-status-select" data-id="<?= htmlspecialchars($fbId) ?>" aria-label="สถานะ <?= htmlspecialchars($fbId) ?>">
           <?php foreach ($statuses as $k => $v): ?>
-          <option value="<?= $k ?>" <?= ($fb['status'] ?? '') === $k ? 'selected' : '' ?>><?= htmlspecialchars($v) ?></option>
+          <option value="<?= $k ?>" <?= $st === $k ? 'selected' : '' ?>><?= htmlspecialchars($k === 'completed' ? 'แก้ไขแล้ว' : $v) ?></option>
           <?php endforeach; ?>
         </select>
         <button type="button" class="admin-btn-outline text-xs fb-delete-btn" data-id="<?= htmlspecialchars($fbId) ?>">ลบ</button>
@@ -226,16 +244,40 @@ require_once __DIR__ . '/includes/header.php';
 
   document.querySelectorAll('.fb-status-select').forEach(function (sel) {
     sel.addEventListener('change', function () {
+      var card = sel.closest('.fb-item-card');
+      var status = sel.value;
       fetch('<?= ADMIN_URL ?>/api/feedback-update.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'same-origin',
-        body: JSON.stringify({ action: 'status', id: sel.dataset.id, status: sel.value }),
+        body: JSON.stringify({ action: 'status', id: sel.dataset.id, status: status }),
       }).then(function (r) { return r.json(); }).then(function (d) {
-        if (!d.ok) alert(d.error || 'อัปเดตไม่สำเร็จ');
+        if (!d.ok) {
+          alert(d.error || 'อัปเดตไม่สำเร็จ');
+          return;
+        }
+        if (card) applyFeedbackStatusUI(card, status);
       });
     });
   });
+
+  var statusUI = {
+    pending: { label: 'รอดำเนินการ', icon: 'clock', badge: 'bg-slate-100 text-slate-600', card: '' },
+    'in-progress': { label: 'กำลังดำเนินการ', icon: 'loader', badge: 'bg-sky-100 text-sky-700', card: 'border-sky-200' },
+    completed: { label: 'แก้ไขแล้ว', icon: 'circle-check', badge: 'bg-emerald-100 text-emerald-700', card: 'border-emerald-300 bg-emerald-50/40' },
+    rejected: { label: 'ปฏิเสธ', icon: 'circle-x', badge: 'bg-rose-100 text-rose-700', card: 'border-rose-200 opacity-80' }
+  };
+
+  function applyFeedbackStatusUI(card, status) {
+    var meta = statusUI[status] || statusUI.pending;
+    card.dataset.status = status;
+    var badge = card.querySelector('.fb-status-badge');
+    if (badge) {
+      badge.className = 'fb-status-badge inline-flex items-center gap-1 text-xs font-medium px-2.5 py-1 rounded-full ' + meta.badge;
+      badge.innerHTML = '<i data-lucide="' + meta.icon + '" class="w-3.5 h-3.5"></i><span class="fb-status-badge-label">' + meta.label + '</span>';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  }
   document.querySelectorAll('.fb-delete-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
       if (!confirm('ลบรายการ ' + btn.dataset.id + '?')) return;

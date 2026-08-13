@@ -1,0 +1,28 @@
+/* TinyMCE — light admin theme */
+.tox-tinymce {
+  border-radius: 0.75rem !important;
+  border-color: #cbd5e1 !important;
+  overflow: hidden;
+}
+
+.tox .tox-toolbar,
+.tox .tox-toolbar__primary,
+.tox .tox-edit-area__iframe,
+.tox .tox-statusbar {
+  background: #fff !important;
+}
+
+.tox .tox-tbtn:hover,
+.tox .tox-tbtn--enabled,
+.tox .tox-tbtn--active {
+  background: #eef2ff !important;
+}
+
+.tox .tox-statusbar {
+  border-top-color: #e2e8f0 !important;
+}
+
+.tox .tox-statusbar a,
+.tox .tox-statusbar__path-item {
+  color: #64748b !important;
+}

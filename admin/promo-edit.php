@@ -116,10 +116,11 @@ require_once __DIR__ . '/includes/header.php';
           placeholder="เช่น ลดสูงสุด 50%">
       </div>
       <div class="lg:col-span-2">
-        <label class="block text-sm font-medium text-gray-300 mb-1.5">รายละเอียด (HTML)</label>
-        <textarea name="description_html" rows="4"
-          class="w-full rounded-lg border border-gray-700 bg-gray-800 text-white px-4 py-2.5 text-sm focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none font-mono"
-          placeholder="รองรับ HTML เช่น <strong>ข้อความหนา</strong>"><?= htmlspecialchars($promo['description_html'] ?? '') ?></textarea>
+        <label for="promo-description-html" class="block text-sm font-medium text-gray-300 mb-1.5">รายละเอียด</label>
+        <p class="text-xs text-slate-500 mb-2">พิมพ์และจัดรูปแบบข้อความได้เลย ไม่ต้องเขียนโค้ด — ใช้แถบเครื่องมือด้านบนสำหรับตัวหนา รายการ ลิงก์ ฯลฯ</p>
+        <textarea id="promo-description-html" name="description_html" rows="10"
+          class="w-full rounded-lg border border-gray-700 bg-gray-800 text-white px-4 py-2.5 text-sm focus:border-brand focus:ring-2 focus:ring-brand/30 outline-none"
+          placeholder="อธิบายรายละเอียดโปรโมชัน เช่น เงื่อนไข ส่วนลด ของสมนาคุณ"><?= htmlspecialchars($promo['description_html'] ?? '') ?></textarea>
       </div>
     </div>
   </div>
@@ -246,4 +247,53 @@ require_once __DIR__ . '/includes/header.php';
   </div>
 </form>
 
-<?php require_once __DIR__ . '/includes/footer.php'; ?>
+<?php
+ob_start();
+?>
+<link rel="stylesheet" href="<?= ADMIN_URL ?>/assets/admin-editor.css">
+<script src="https://cdn.jsdelivr.net/npm/tinymce@7.6.1/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+(function () {
+  if (typeof tinymce === 'undefined') return;
+
+  tinymce.init({
+    selector: '#promo-description-html',
+    license_key: 'gpl',
+    height: 380,
+    menubar: false,
+    branding: false,
+    promotion: false,
+    plugins: 'lists link table code autoresize',
+    toolbar:
+      'undo redo | blocks | bold italic underline strikethrough | ' +
+      'alignleft aligncenter alignright | bullist numlist | ' +
+      'link table | removeformat | code',
+    block_formats: 'ย่อหน้า=p; หัวข้อ 2=h2; หัวข้อ 3=h3; หัวข้อ 4=h4',
+    content_style:
+      'body { font-family: "Sarabun", "Segoe UI", sans-serif; font-size: 15px; line-height: 1.6; color: #1e293b; padding: 12px; }' +
+      'p { margin: 0 0 0.75em; } ul, ol { margin: 0 0 0.75em; padding-left: 1.4em; }',
+    language: 'en',
+    convert_urls: false,
+    relative_urls: false,
+    entity_encoding: 'raw',
+    valid_elements: '*[*]',
+    extended_valid_elements: '*[*]',
+    setup: function (editor) {
+      editor.on('change keyup SetContent', function () {
+        editor.save();
+      });
+    },
+  });
+
+  var form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function () {
+      if (window.tinymce) tinymce.triggerSave();
+    });
+  }
+})();
+</script>
+<?php
+$extraScripts = ob_get_clean();
+require_once __DIR__ . '/includes/footer.php';
+?>

@@ -195,7 +195,7 @@ function feedbackStatuses(): array {
     return [
         'pending' => 'รอดำเนินการ',
         'in-progress' => 'กำลังดำเนินการ',
-        'completed' => 'เสร็จสิ้น',
+        'completed' => 'แก้ไขแล้ว',
         'rejected' => 'ปฏิเสธ',
     ];
 }
