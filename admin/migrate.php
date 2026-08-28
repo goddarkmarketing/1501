@@ -90,7 +90,23 @@ try {
         sort_order INT DEFAULT 0
     ) ENGINE=InnoDB");
 
-    $newSettings = [
+    $pdo->exec("CREATE TABLE IF NOT EXISTS site_settings (
+        setting_key VARCHAR(100) PRIMARY KEY,
+        setting_value TEXT,
+        setting_group VARCHAR(50) DEFAULT 'general',
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB");
+
+    $defaultSettings = [
+        ['site_name', 'Agent Thailand', 'general'],
+        ['site_tagline', 'ตัวแทนประกันชีวิต FWD', 'general'],
+        ['phone', '065-651-5328', 'contact'],
+        ['email', 'agentthailand.fwd@gmail.com', 'contact'],
+        ['line_id', '@agentthailand', 'contact'],
+        ['facebook', 'AgentThailandFWD', 'social'],
+        ['tiktok', '@agentthailand', 'social'],
+        ['address', '130 ถนนสุขุมวิท แขวงบางจาก เขตพระโขนง กรุงเทพมหานคร 10260', 'contact'],
+        ['primary_color', '#150f96', 'theme'],
         ['phone2', '02-116-4915', 'contact'],
         ['business_hours', 'จันทร์–ศุกร์ 09:00–18:00 น. · เสาร์ 09:00–12:00 น.', 'contact'],
         ['copyright', '© 2025 Agent Thailand — ตัวแทน FWD ประกันชีวิต สงวนลิขสิทธิ์', 'general'],
@@ -104,7 +120,7 @@ try {
         ['logo_url', 'assets/img/logo.png', 'general'],
     ];
     $stmt = $pdo->prepare('INSERT IGNORE INTO site_settings (setting_key, setting_value, setting_group) VALUES (?, ?, ?)');
-    foreach ($newSettings as $s) {
+    foreach ($defaultSettings as $s) {
         $stmt->execute($s);
     }
 
@@ -128,6 +144,7 @@ try {
     feedbackReviewPasswordHash();
 
     echo "Migration completed successfully.\n";
+    echo "Site settings: " . $pdo->query('SELECT COUNT(*) FROM site_settings')->fetchColumn() . "\n";
     echo "CMS blocks seeded: " . $pdo->query('SELECT COUNT(*) FROM cms_blocks')->fetchColumn() . "\n";
 } catch (Throwable $e) {
     http_response_code(500);

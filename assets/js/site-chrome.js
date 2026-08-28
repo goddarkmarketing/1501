@@ -166,6 +166,18 @@ function initSiteSettings() {
     }
   });
 
+  if (s.logo_url) {
+    document.querySelectorAll('.logo__img').forEach((img) => {
+      img.src = s.logo_url;
+      if (s.site_name) img.alt = s.site_name;
+    });
+  }
+  if (s.site_tagline) {
+    document.querySelectorAll('.logo__sub').forEach((el) => {
+      el.textContent = s.site_tagline;
+    });
+  }
+
   const fab = typeof SITE_BLOCKS !== 'undefined' ? SITE_BLOCKS.hero_fab : null;
   if (fab && fab.items) {
     const fabIcons = {
