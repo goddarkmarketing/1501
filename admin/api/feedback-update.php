@@ -27,6 +27,13 @@ if (!is_array($payload)) {
 $action = $payload['action'] ?? '';
 $id = trim((string) ($payload['id'] ?? ''));
 
+if ($action === 'tool_enabled') {
+    $enabled = !empty($payload['enabled']);
+    feedbackSetToolEnabled($enabled);
+    echo json_encode(['ok' => true, 'enabled' => $enabled]);
+    exit;
+}
+
 if ($id === '') {
     http_response_code(400);
     echo json_encode(['ok' => false, 'error' => 'Missing id']);

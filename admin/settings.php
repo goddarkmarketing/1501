@@ -39,19 +39,55 @@ $groupLabels = [
 
 $groupOrder = ['general', 'contact', 'social', 'theme', 'legal'];
 
+$groupMap = [
+    'site_name' => 'general',
+    'site_tagline' => 'general',
+    'logo_url' => 'general',
+    'copyright' => 'general',
+    'phone' => 'contact',
+    'phone2' => 'contact',
+    'email' => 'contact',
+    'line_id' => 'contact',
+    'address' => 'contact',
+    'business_hours' => 'contact',
+    'facebook' => 'social',
+    'tiktok' => 'social',
+    'facebook_url' => 'social',
+    'line_url' => 'social',
+    'tiktok_url' => 'social',
+    'youtube_url' => 'social',
+    'instagram_url' => 'social',
+    'primary_color' => 'theme',
+    'privacy_url' => 'legal',
+    'terms_url' => 'legal',
+];
+
+function saveSiteSettingValue(string $key, string $value, array $groupMap): void {
+    $group = $groupMap[$key] ?? 'general';
+    query(
+        'INSERT INTO site_settings (setting_key, setting_value, setting_group) VALUES (?, ?, ?)
+         ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value), setting_group = VALUES(setting_group)',
+        [$key, $value, $group]
+    );
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['settings'])) {
     try {
         foreach ($_POST['settings'] as $key => $value) {
             if (!isset($labelMap[$key])) {
                 continue;
             }
-            query('UPDATE site_settings SET setting_value = ? WHERE setting_key = ?', [$value, $key]);
+            saveSiteSettingValue($key, $value, $groupMap);
         }
         $uploadedLogo = handleImageUpload($_FILES['logo_url_file'] ?? null, 'branding');
         if ($uploadedLogo) {
-            query('UPDATE site_settings SET setting_value = ? WHERE setting_key = ?', [$uploadedLogo, 'logo_url']);
+            saveSiteSettingValue('logo_url', $uploadedLogo, $groupMap);
         }
-        $message = 'บันทึกการตั้งค่าเรียบร้อยแล้ว — กด «เผยแพร่เว็บไซต์» ที่แถบซ้ายเพื่อให้โลโก้ใหม่แสดงบนหน้าเว็บ';
+
+        define('CMS_INTERNAL_PUBLISH', true);
+        require_once __DIR__ . '/api/publish.php';
+
+        $message = 'บันทึกและเผยแพร่เรียบร้อยแล้ว — โลโก้และการตั้งค่าอัปเดตบนหน้าเว็บแล้ว (รีเฟรชหน้าเว็บด้วย Ctrl+F5)';
         $messageType = 'success';
     } catch (Exception $e) {
         $message = 'เกิดข้อผิดพลาด: ' . $e->getMessage();
@@ -137,7 +173,7 @@ require_once __DIR__ . '/includes/header.php';
           <?php elseif ($key === 'logo_url'): ?>
           <div class="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
             <?php renderImageField('settings[logo_url]', $val, 'โลโก้เว็บไซต์ (Header + Footer)', 'logo_url_file'); ?>
-            <p class="text-xs text-slate-500 mt-2">อัปโหลดไฟล์ PNG/JPG/WebP แนะนำพื้นหลังโปร่งใส กว้างประมาณ 180–360 px — หลังบันทึกให้กด <strong>เผยแพร่เว็บไซต์</strong> ที่เมนูซ้าย</p>
+            <p class="text-xs text-slate-500 mt-2">อัปโหลดไฟล์ PNG/JPG/WebP แนะนำพื้นหลังโปร่งใส กว้างประมาณ 180–360 px — กดบันทึกแล้วระบบจะเผยแพร่ให้อัตโนมัติ</p>
           </div>
           <?php elseif ($key === 'address' || $key === 'business_hours' || $key === 'copyright' || $key === 'site_tagline'): ?>
           <textarea id="setting_<?= htmlspecialchars($key) ?>"

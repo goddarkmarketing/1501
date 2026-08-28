@@ -361,6 +361,14 @@ function buildSiteContentJs(): string {
         $settings[$row['setting_key']] = $row['setting_value'];
     }
 
+    $logoPath = $settings['logo_url'] ?? '';
+    if ($logoPath !== '' && !preg_match('#^https?://#i', $logoPath)) {
+        $abs = SITE_ROOT . '/' . ltrim($logoPath, '/');
+        if (is_file($abs)) {
+            $settings['logo_version'] = (string) filemtime($abs);
+        }
+    }
+
     $faqItems = [];
     foreach (fetchAll('SELECT question, answer FROM faq_items WHERE is_active = 1 ORDER BY sort_order, id') as $row) {
         $faqItems[] = ['q' => $row['question'], 'a' => $row['answer']];

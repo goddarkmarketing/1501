@@ -12,7 +12,7 @@
 if (!isset($feedbackLibLoaded)) {
     require_once __DIR__ . '/feedback-lib.php';
 }
-if (feedbackCanUseTool()):
+if (feedbackShouldShowTool()):
     $fbNextId = feedbackNextId(feedbackLoadItems());
 ?>
 <link rel="stylesheet" href="<?= ADMIN_URL ?>/assets/feedback-tool.css">

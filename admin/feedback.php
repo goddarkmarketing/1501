@@ -41,6 +41,7 @@ $statuses = feedbackStatuses();
 $reviewUrl = feedbackReviewUrl();
 $exportBase = ADMIN_URL . '/api/feedback-export.php';
 $exportQs = http_build_query(array_filter($filters));
+$toolEnabled = feedbackToolEnabled();
 
 require_once __DIR__ . '/includes/header.php';
 ?>
@@ -49,15 +50,30 @@ require_once __DIR__ . '/includes/header.php';
 <div class="mb-6 <?= $messageType === 'success' ? 'admin-alert-success' : 'admin-alert-error' ?>"><?= htmlspecialchars($message) ?></div>
 <?php endif; ?>
 
+<div class="admin-card p-6 mb-6" data-feedback-id="feedback-tool-toggle">
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div>
+      <h3 class="text-base font-semibold text-slate-800 mb-1">ปุ่มแจ้งแก้ไข</h3>
+      <p class="text-sm text-slate-500">เปิดเมื่อต้องการให้แสดงปุ่ม <strong>แจ้งแก้ไข</strong> ในทุกหน้าหลังบ้าน (และลิงก์ตรวจงานลูกค้า) — ปิดไว้ตามค่าเริ่มต้น</p>
+    </div>
+    <label class="relative inline-flex items-center cursor-pointer flex-shrink-0">
+      <input type="checkbox" id="fb-tool-enabled" class="sr-only peer" <?= $toolEnabled ? 'checked' : '' ?>>
+      <div class="w-11 h-6 bg-slate-200 peer-focus:ring-2 peer-focus:ring-brand/30 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand"></div>
+      <span class="ms-3 text-sm font-medium text-slate-700" id="fb-tool-enabled-label"><?= $toolEnabled ? 'เปิดใช้งาน' : 'ปิดอยู่' ?></span>
+    </label>
+  </div>
+</div>
+
 <div class="admin-card p-6 mb-6 border-brand/20" data-feedback-id="feedback-howto">
   <h3 class="text-base font-semibold text-slate-800 mb-2">วิธีสร้าง Feedback</h3>
   <ol class="text-sm text-slate-600 space-y-1.5 list-decimal list-inside mb-3">
-    <li>กดปุ่มสีน้ำเงิน <strong>แจ้งแก้ไข</strong> มุมขวาล่าง</li>
+    <li>เปิดสวิตช์ <strong>ปุ่มแจ้งแก้ไข</strong> ด้านบน (ถ้ายังไม่ได้เปิด)</li>
+    <li>กดปุ่มสีน้ำเงิน <strong>แจ้งแก้ไข</strong> มุมซ้ายล่าง</li>
     <li>เลื่อนเมาส์ไปวางบนส่วนใดก็ได้ — จะขึ้น<strong>กรอบสีเหลือง</strong></li>
     <li>คลิกส่วนนั้น แล้วพิมพ์รายละเอียดที่ต้องการแก้</li>
     <li>กดบันทึก (ระบบแคปหน้าจอให้อัตโนมัติ) หรือกด Esc เพื่อยกเลิก</li>
   </ol>
-  <p class="text-xs text-slate-400">ใช้ได้ทุกหน้าในหลังบ้านขณะล็อกอินอยู่</p>
+  <p class="text-xs text-slate-400">ใช้ได้ทุกหน้าในหลังบ้านขณะเปิดสวิตช์อยู่</p>
 </div>
 
 <div class="admin-card p-6 mb-6" data-feedback-id="feedback-settings">
@@ -202,6 +218,34 @@ $statusMeta = [
 
 <script>
 (function () {
+  var toolToggle = document.getElementById('fb-tool-enabled');
+  if (toolToggle) {
+    toolToggle.addEventListener('change', function () {
+      var enabled = toolToggle.checked;
+      var label = document.getElementById('fb-tool-enabled-label');
+      toolToggle.disabled = true;
+      fetch('<?= ADMIN_URL ?>/api/feedback-update.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'same-origin',
+        body: JSON.stringify({ action: 'tool_enabled', enabled: enabled }),
+      }).then(function (r) { return r.json(); }).then(function (d) {
+        if (!d.ok) {
+          toolToggle.checked = !enabled;
+          alert(d.error || 'บันทึกไม่สำเร็จ');
+          return;
+        }
+        if (label) label.textContent = enabled ? 'เปิดใช้งาน' : 'ปิดอยู่';
+        location.reload();
+      }).catch(function () {
+        toolToggle.checked = !enabled;
+        alert('บันทึกไม่สำเร็จ');
+      }).finally(function () {
+        toolToggle.disabled = false;
+      });
+    });
+  }
+
   var lightbox = document.createElement('div');
   lightbox.id = 'fb-img-lightbox';
   lightbox.className = 'fixed inset-0 z-[100] hidden items-center justify-center bg-slate-900/70 p-4';

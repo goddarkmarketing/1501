@@ -10,6 +10,19 @@
   gap: 0.5rem;
 }
 
+/* Admin: keep FAB away from right-aligned save/submit buttons */
+.admin-app .fb-fab-wrap {
+  right: auto;
+  left: 1.25rem;
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .admin-app .fb-fab-wrap {
+    left: calc(16rem + 1.25rem);
+  }
+}
+
 .fb-fab-secondary {
   display: none;
   padding: 0.45rem 0.85rem;
@@ -263,6 +276,17 @@ body.fb-mode-active .fb-modal-backdrop * {
   transition: opacity 0.3s, transform 0.3s;
 }
 
+.admin-app .fb-toast {
+  right: auto;
+  left: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .admin-app .fb-toast {
+    left: calc(16rem + 1.25rem);
+  }
+}
+
 .fb-toast--show {
   opacity: 1;
   transform: translateY(0);
@@ -271,6 +295,9 @@ body.fb-mode-active .fb-modal-backdrop * {
 @media (max-width: 640px) {
   .fb-fab span {
     display: none;
+  }
+  .admin-app .fb-fab span {
+    display: inline;
   }
   .fb-grid {
     grid-template-columns: 1fr;

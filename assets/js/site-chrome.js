@@ -147,6 +147,14 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
+function assetUrl(path, version) {
+  if (!path) return path;
+  if (/^https?:\/\//i.test(path)) return path;
+  if (!version) return path;
+  const sep = path.includes('?') ? '&' : '?';
+  return `${path}${sep}v=${encodeURIComponent(version)}`;
+}
+
 function initSiteSettings() {
   if (typeof SITE_SETTINGS === 'undefined') return;
 
@@ -167,8 +175,9 @@ function initSiteSettings() {
   });
 
   if (s.logo_url) {
+    const logoSrc = assetUrl(s.logo_url, s.logo_version);
     document.querySelectorAll('.logo__img').forEach((img) => {
-      img.src = s.logo_url;
+      img.src = logoSrc;
       if (s.site_name) img.alt = s.site_name;
     });
   }

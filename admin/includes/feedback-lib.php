@@ -53,6 +53,18 @@ function feedbackCanUseTool(): bool {
     return isLoggedIn() || isFeedbackReview();
 }
 
+function feedbackToolEnabled(): bool {
+    return feedbackGetSetting('feedback_tool_enabled', '0') === '1';
+}
+
+function feedbackSetToolEnabled(bool $enabled): void {
+    feedbackSetSetting('feedback_tool_enabled', $enabled ? '1' : '0');
+}
+
+function feedbackShouldShowTool(): bool {
+    return feedbackCanUseTool() && feedbackToolEnabled();
+}
+
 function feedbackCanManage(): bool {
     return isLoggedIn();
 }

@@ -147,8 +147,8 @@ $navActivePage = $navActiveAliases[$currentPage] ?? $currentPage;
     </button>
     <h2 class="text-lg font-semibold text-slate-800"><?= $pageTitle ?? '' ?></h2>
     <div class="ms-auto flex items-center gap-3">
-      <?php if (feedbackCanUseTool()): ?>
-      <span class="hidden sm:inline text-xs text-brand font-medium">กดปุ่ม “แจ้งแก้ไข” มุมขวาล่างเพื่อแคปและพิมพ์รายละเอียด</span>
+      <?php if (feedbackShouldShowTool()): ?>
+      <span class="hidden sm:inline text-xs text-brand font-medium">กดปุ่ม “แจ้งแก้ไข” มุมซ้ายล่างเพื่อแคปและพิมพ์รายละเอียด</span>
       <?php endif; ?>
       <a href="<?= SITE_URL ?>/" target="_blank" class="text-xs text-slate-500 hover:text-brand font-medium">ดูเว็บไซต์ ↗</a>
     </div>
