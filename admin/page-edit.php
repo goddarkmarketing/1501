@@ -497,6 +497,24 @@ require_once __DIR__ . '/includes/header.php';
     });
   });
 
+  document.querySelectorAll('.admin-image-path').forEach((input) => {
+    input.addEventListener('input', () => {
+      const match = String(input.name || '').match(/^sections\[(.+)\]$/);
+      if (match) pushUpdate(match[1], input.value.trim());
+    });
+  });
+
+  document.querySelectorAll('.admin-image-file').forEach((input) => {
+    input.addEventListener('change', () => {
+      const key = String(input.name || '').replace(/^section_file_/, '');
+      const file = input.files && input.files[0];
+      if (!key || !file) return;
+      const reader = new FileReader();
+      reader.onload = () => pushUpdate(key, String(reader.result || ''));
+      reader.readAsDataURL(file);
+    });
+  });
+
   document.querySelectorAll('[data-select-key]').forEach((btn) => {
     btn.addEventListener('click', () => selectKey(btn.dataset.selectKey));
   });

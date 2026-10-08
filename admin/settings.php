@@ -2,6 +2,7 @@
 $pageTitle = 'ตั้งค่าเว็บไซต์';
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/upload.php';
+require_once __DIR__ . '/includes/site-settings-lib.php';
 
 $message = '';
 $messageType = '';
@@ -71,6 +72,17 @@ function saveSiteSettingValue(string $key, string $value, array $groupMap): void
     );
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['seed_defaults'])) {
+    try {
+        seedDefaultSiteSettings();
+        header('Location: ' . ADMIN_URL . '/settings.php?seeded=1');
+        exit;
+    } catch (Exception $e) {
+        $message = 'สร้างค่าเริ่มต้นไม่สำเร็จ: ' . $e->getMessage();
+        $messageType = 'error';
+    }
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['settings'])) {
     try {
         foreach ($_POST['settings'] as $key => $value) {
@@ -98,7 +110,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['settings'])) {
 $settings = [];
 $grouped = [];
 $dbError = false;
+$seedError = '';
 try {
+    ensureSiteSettingsTable();
+    if (countVisibleSiteSettings() === 0) {
+        seedDefaultSiteSettings();
+    }
     $settings = fetchAll('SELECT * FROM site_settings ORDER BY setting_group, setting_key');
     foreach ($settings as $s) {
         $group = $s['setting_group'] ?? 'general';
@@ -110,6 +127,7 @@ try {
     }
 } catch (Exception $e) {
     $dbError = true;
+    $seedError = $e->getMessage();
 }
 
 $orderedGroups = [];
@@ -129,6 +147,9 @@ require_once __DIR__ . '/includes/header.php';
 <?php if ($message): ?>
 <?= adminAlert($message, $messageType) ?>
 <?php endif; ?>
+<?php if (!empty($_GET['seeded'])): ?>
+<div class="mb-6 admin-alert-success">สร้างค่าตั้งค่าเริ่มต้นเรียบร้อยแล้ว — แก้ไขและอัปโหลดโลโก้ได้ด้านล่าง</div>
+<?php endif; ?>
 
 <?php if ($dbError): ?>
 <div class="admin-card p-8 text-center">
@@ -137,10 +158,15 @@ require_once __DIR__ . '/includes/header.php';
 </div>
 <?php elseif (empty($orderedGroups)): ?>
 <div class="admin-card p-8 text-center">
-  <p class="text-slate-500 mb-2">ยังไม่มีข้อมูลการตั้งค่า</p>
-  <p class="text-sm text-slate-400 mb-4">ตาราง <code class="bg-slate-100 px-2 py-0.5 rounded text-xs">site_settings</code> ในฐานข้อมูลยังว่าง — รันสคริปต์ migrate เพื่อสร้างค่าเริ่มต้น (ไม่ลบข้อมูลเดิม)</p>
-  <a href="<?= ADMIN_URL ?>/migrate.php" class="admin-btn-primary inline-flex" target="_blank" rel="noopener">เปิด migrate.php</a>
-  <p class="text-xs text-slate-400 mt-4">หลัง migrate สำเร็จ ให้รีเฟรชหน้านี้ แล้วอัปโหลดโลโก้ได้ที่หมวด «ทั่วไป»</p>
+  <p class="text-slate-500 mb-2">ยังโหลดข้อมูลการตั้งค่าไม่ได้</p>
+  <?php if ($seedError): ?>
+  <p class="text-sm text-red-600 mb-4"><?= htmlspecialchars($seedError) ?></p>
+  <?php endif; ?>
+  <p class="text-sm text-slate-400 mb-4">ลองสร้างค่าเริ่มต้น หรือรัน migrate บนเซิร์ฟเวอร์ (ไม่ลบข้อมูลเดิม)</p>
+  <form method="POST" class="inline-block me-2">
+    <button type="submit" name="seed_defaults" value="1" class="admin-btn-primary">สร้างค่าเริ่มต้น</button>
+  </form>
+  <a href="<?= ADMIN_URL ?>/migrate.php" class="admin-btn-outline inline-flex" target="_blank" rel="noopener">เปิด migrate.php</a>
 </div>
 <?php else: ?>
 <form method="POST" enctype="multipart/form-data" data-feedback-id="settings-form">

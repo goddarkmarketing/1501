@@ -23,6 +23,8 @@ function getPageDefinitions(): array {
                 ['key' => 'rec_section_label', 'label' => 'ป้ายกำกับแผนแนะนำ', 'type' => 'text'],
                 ['key' => 'rec_section_title', 'label' => 'หัวข้อแผนแนะนำ', 'type' => 'text'],
                 ['key' => 'consult_title', 'label' => 'หัวข้อฟอร์มปรึกษา', 'type' => 'text'],
+                ['key' => 'consult_image', 'label' => 'รูปข้างฟอร์มปรึกษาผู้เชี่ยวชาญ', 'type' => 'image'],
+                ['key' => 'feature_image', 'label' => 'รูปส่วนที่ปรึกษามืออาชีพ', 'type' => 'image'],
             ],
         ],
         'about' => [
@@ -194,6 +196,8 @@ function getDefaultSectionValues(string $page): array {
             'rec_section_label' => 'ประกัน',
             'rec_section_title' => 'แผนประกันแนะนำ',
             'consult_title' => 'ปรึกษาผู้เชี่ยวชาญประกันชีวิต',
+            'consult_image' => 'assets/img/consult-advisor.jpg',
+            'feature_image' => 'assets/img/feature-advisor.png',
         ],
         'about' => [
             'hero_title' => 'เกี่ยวกับเรา',

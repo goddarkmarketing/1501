@@ -134,7 +134,7 @@ function initCmsPreviewBridge() {
   if (window.parent === window) return;
   if (document.querySelector('script[data-cms-preview-bridge]')) return;
   const s = document.createElement('script');
-  s.src = 'assets/js/cms-preview-bridge.js';
+  s.src = 'assets/js/cms-preview-bridge.js?v=20261008';
   s.dataset.cmsPreviewBridge = '1';
   document.body.appendChild(s);
 }
@@ -427,9 +427,8 @@ function renderHomeFeatures(el, data) {
   if (lead && data.lead) lead.textContent = data.lead;
 
   const img = el.querySelector('.feature-grid__image img, .feature-section img');
-  if (img && data.image) {
-    const src = String(data.image).replace(/\.jpg$/i, '.png');
-    img.src = src;
+  if (img && data.image && !pageImageValue(img)) {
+    img.src = data.image;
   }
 
   const grid = el.querySelector('.feature-cards, .feature-grid__cards, .feature-grid__list');
@@ -550,9 +549,17 @@ function renderAboutQuote(el, data) {
   if (role && data.role) role.textContent = data.role;
 }
 
+function pageImageValue(img) {
+  const key = img?.dataset?.contentSrc || img?.dataset?.contentBg || '';
+  if (!key || typeof SITE_PAGES === 'undefined') return '';
+  const page = document.body?.dataset?.page || '';
+  const value = SITE_PAGES[page]?.[key];
+  return value ? String(value) : '';
+}
+
 function renderConsultAside(el, data) {
   const img = el.querySelector('.consult-aside-card__media img, img');
-  if (img && data.image) { img.src = data.image; }
+  if (img && data.image && !pageImageValue(img)) { img.src = data.image; }
   const title = el.querySelector('.consult-aside-card__title');
   const text = el.querySelector('.consult-aside-card__text');
   if (title && data.title) title.textContent = data.title;
@@ -637,7 +644,7 @@ function initHomeFeaturedPlans() {
 }
 
 function initConsultForms() {
-  document.querySelectorAll('.consult-form, form.consult-form').forEach((form) => {
+  document.querySelectorAll('.consult-form, form.consult-form, form.hero-form').forEach((form) => {
     if (form.dataset.bound) return;
     form.dataset.bound = '1';
     form.addEventListener('submit', async (e) => {

@@ -78,6 +78,7 @@ $statusColors = ['new' => 'bg-blue-900/30 text-blue-400', 'contacted' => 'bg-yel
     <a href="<?= ADMIN_URL ?>/plan-edit.php" class="admin-btn-primary">+ แผนประกัน</a>
     <a href="<?= ADMIN_URL ?>/blog-edit.php" class="admin-btn-primary">+ บทความ</a>
     <a href="<?= ADMIN_URL ?>/promo-edit.php" class="admin-btn-primary">+ โปรโมชัน</a>
+    <a href="<?= ADMIN_URL ?>/backup.php" class="admin-btn-outline">แบ็คอัพข้อมูล</a>
     <a href="<?= ADMIN_URL ?>/api/publish.php" onclick="return confirm('เผยแพร่การเปลี่ยนแปลงทั้งหมดไปยังเว็บไซต์?')" class="inline-flex items-center gap-2 px-4 py-2.5 border border-emerald-200 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 text-sm font-medium rounded-lg transition">
       เผยแพร่เว็บไซต์
     </a>

@@ -61,6 +61,7 @@ $navActivePage = $navActiveAliases[$currentPage] ?? $currentPage;
           'contacts' => 'mail',
           'users' => 'users',
           'settings' => 'settings',
+          'backup' => 'archive',
           'seed' => 'cloud-download',
           'publish' => 'upload',
           'feedback' => 'message-square',
@@ -97,6 +98,7 @@ $navActivePage = $navActiveAliases[$currentPage] ?? $currentPage;
           $navLink('contacts', 'ข้อความติดต่อ', 'contacts'),
           $navLink('users', 'ผู้ดูแลระบบ', 'users'),
           $navLink('settings', 'ตั้งค่าเว็บไซต์', 'settings'),
+          $navLink('backup', 'แบ็คอัพข้อมูล', 'backup'),
         ],
       ];
       foreach ($groups as $groupLabel => $navItems): ?>

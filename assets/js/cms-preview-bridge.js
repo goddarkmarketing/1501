@@ -380,13 +380,7 @@
 
     if (data.type === 'hydrate' && data.fields) {
       Object.keys(data.fields).forEach(function (key) {
-        var value = data.fields[key]
-        document.querySelectorAll('[data-content="' + key + '"]').forEach(function (el) {
-          el.innerHTML = String(value ?? '')
-        })
-        document.querySelectorAll('[data-content-href="' + key + '"]').forEach(function (el) {
-          el.setAttribute('href', String(value ?? ''))
-        })
+        applyPageField(key, data.fields[key])
       })
       markEditables()
       window.parent.postMessage({ source: 'agent-cms-preview', type: 'ready' }, '*')
@@ -394,12 +388,7 @@
     }
 
     if (data.type === 'update-page' && data.key) {
-      document.querySelectorAll('[data-content="' + data.key + '"]').forEach(function (el) {
-        el.innerHTML = String(data.value ?? '')
-      })
-      document.querySelectorAll('[data-content-href="' + data.key + '"]').forEach(function (el) {
-        el.setAttribute('href', String(data.value ?? ''))
-      })
+      applyPageField(data.key, data.value)
     }
 
     if (data.type === 'update-dom' && data.selector) {
@@ -495,7 +484,7 @@
 
     if (data.type === 'highlight' && data.key) {
       document.querySelectorAll('.is-cms-active').forEach(function (n) { n.classList.remove('is-cms-active') })
-      var el = document.querySelector('[data-content="' + data.key + '"]') || document.querySelector('[data-content-href="' + data.key + '"]')
+      var el = document.querySelector('[data-content="' + data.key + '"]') || document.querySelector('[data-content-href="' + data.key + '"]') || document.querySelector('[data-content-src="' + data.key + '"]') || document.querySelector('[data-content-bg="' + data.key + '"]')
       if (el) {
         el.classList.add('is-cms-active')
         el.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -504,6 +493,22 @@
 
     if (data.type === 'remark') markEditables()
   })
+
+  function applyPageField(key, value) {
+    var str = String(value ?? '')
+    document.querySelectorAll('[data-content="' + key + '"]').forEach(function (el) {
+      el.innerHTML = str
+    })
+    document.querySelectorAll('[data-content-href="' + key + '"]').forEach(function (el) {
+      el.setAttribute('href', str)
+    })
+    document.querySelectorAll('[data-content-src="' + key + '"]').forEach(function (el) {
+      if (str) el.setAttribute('src', str)
+    })
+    document.querySelectorAll('[data-content-bg="' + key + '"]').forEach(function (el) {
+      if (str) el.style.backgroundImage = "url('" + str.replace(/'/g, '') + "')"
+    })
+  }
 
   function boot() {
     markEditables()
